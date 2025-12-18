@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 // La clase Database define el método `getInstance` que permite
 // a los clientes acceder a la misma instancia de una conexión
 // a la base de datos en todo el programa.
-class HibernateSingleton {
+public class HibernateSingleton {
     // Campo estático para almacenar la instancia única.
     private static HibernateSingleton instance;
     private SessionFactory session;

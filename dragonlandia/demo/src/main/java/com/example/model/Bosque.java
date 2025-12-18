@@ -43,6 +43,12 @@ public class Bosque {
     private List<Monstruo> listaMonstruos;
 
     /**
+     * Dragon que habita en el bosque
+     */
+    @OneToOne
+    private Dragon dragon;
+
+    /**
      * Obtiene el ID del bosque.
      * 
      * @return
@@ -144,11 +150,15 @@ public class Bosque {
      * @param nombre
      * @param nivelPeligro
      * @param monstruoJefe
+     * @param listaMonstruos
+     * @param dragon
      */
-    public Bosque(String nombre, int nivelPeligro, Monstruo monstruoJefe) {
+    public Bosque(String nombre, int nivelPeligro, Monstruo monstruoJefe, List<Monstruo> listaMonstruos, Dragon dragon) {
         this.nombre = nombre;
         this.nivelPeligro = nivelPeligro;
         this.monstruoJefe = monstruoJefe;
+        this.listaMonstruos = listaMonstruos;
+        this.dragon = dragon;
     }
 
     /**

@@ -8,94 +8,117 @@ Tarea de Cristina donde debemos crear una aplicación Java en VSCode, Maven e Hi
 ## Analisis
 ### Diagrama de clases
 
-``` code: mermaid
+``` Mermaid
 ---
 config:
   look: classic
   theme: mc
 ---
 classDiagram
-class Mago{
-    -int id
-    -String nombre
-    -int vida
-    -int nivelMagia
-
-    +lanzarHechizo(Monstruo monstruo) : void
-    +lanzarHechizo(Monstruo monstruo, Hechizo hechizo) : void
-}
-class Monstruo{
-    -int id
-    -String nombre
-    -int vida
-    -TipoMonstruo tipo
-    -int fuerza
-
-    +atacar(Mago mago) : void
-}
-class Bosque{
-    -int id
-    -String nombre
-    -int nivelPeligro
-    -Monstruo monstruo
-    -List<Monstruo> listaMonstruos
-
-    +mostrarJefe(Monstruo monstruo) : void
-    +cambiarJefe(Monstruo monstruo) : void
+class Mago {
+  -int id
+  -String nombre
+  -int vida
+  -int nivelMagia
+  -List<Hechizo> conjuros
+  +lanzarHechizo(Monstruo) : void
+  +lanzarHechizo(Monstruo, Hechizo) : void
 }
 
-class ControladorMago{
-    -Mago mago
+class Monstruo {
+  -int id
+  -String nombre
+  -int vida
+  -TipoMonstruo tipo
+  -int fuerza
+  +atacar(Mago) : void
 }
 
-class ControladorMonstruo{
-    -Monstruo monstruo
-}
-class ControladorBosque{
-    -Bosque bosque
+class Bosque {
+  -int id
+  -String nombre
+  -int nivelPeligro
+  -Monstruo monstruoJefe
+  -List<Monstruo> listaMonstruos
+  -Dragon dragon
+  +mostrarJefe() : void
+  +cambiarJefe(Monstruo) : void
 }
 
-class Controlador {
-    -ControladorMago ControladorMago
-    -ControladorMonstruo ControladorMonstruo
-    -ControladorBosque ControladorBosque
+class Dragon {
+  -int id
+  -String nombre
+  -int intensidadFuego
+  -int resistencia
+  +exhalar(Monstruo) : void
 }
 
 class Hechizo {
-    + Efecto(List<Monstruo> monstruo) : void
-}
-class BolaFuego {
-    + Efecto(List<Monstruo> monstruo) : void
-}
-class RayoHielo {
-    + Efecto(List<Monstruo> monstruo) : void
-}
-class BolaNieve {
-    + Efecto(List<Monstruo> monstruo) : void
-}
-class Intimidacion {
-    + Efecto(List<Monstruo> monstruo) : void
+  <<abstract>>
+  -int id
+  +efecto(List<Monstruo>) : void
 }
 
+class BolaFuego
+class Rayo
+class BolaNieve
+class Intimidacion
 
+class ControladorMago {
+  -Mago mago
+  +crearHechizoPorNombre(String) : Hechizo
+  +guardarMago() : void
+  
+}
+class ControladorMonstruo {
+  -Monstruo monstruo
+  +guardarMonstruo() : void
+  
+}
+class ControladorBosque {
+  -Bosque bosque
+  +obtenerMonstruosSinBosque() : List~Monstruo~
+  +guardarBosque() : void
+  
+}
+class ControladorBatalla {
+  
+}
+class ControladorDragon {
+  -Dragon dragon
+  
+}
+class Controlador {
+  -ControladorMago controladorMago
+  -ControladorMonstruo controladorMonstruo
+  -ControladorBosque controladorBosque
+  -ControladorBatalla controladorBatalla
+  -ControladorDragon controladorDragon
+}
 
+Mago --> Hechizo : 1..*
+Bosque --> Monstruo : 1..*
+Bosque --> Monstruo : 1 [monstruoJefe]
+Bosque --> Dragon : 1
+Hechizo <|-- BolaFuego
+Hechizo <|-- Rayo
+Hechizo <|-- BolaNieve
+Hechizo <|-- Intimidacion
 
-Mago <|-- ControladorMago
-Monstruo <|-- ControladorMonstruo
-Bosque <|-- ControladorBosque
-ControladorBosque <|-- Controlador
-ControladorMago <|-- Controlador
-ControladorMonstruo <|-- Controlador
-BolaFuego <|-- Hechizo
-RayoHielo <|-- Hechizo
-BolaNieve <|-- Hechizo
-Intimidacion <|-- Hechizo
-Hechizo <|-- Mago
+ControladorMago --> Mago
+ControladorMonstruo --> Monstruo
+ControladorBosque --> Bosque
+ControladorDragon --> Dragon
+Controlador --> ControladorMago
+Controlador --> ControladorMonstruo
+Controlador --> ControladorBosque
+Controlador --> ControladorBatalla
+Controlador --> ControladorDragon
 ``` 
 ## Diseño
 ### Diagrama entidad relacion
 
-``` code: mermaid
+``` Mermaid
 erDiagram
     MAGO {
         int id PK
@@ -103,6 +126,15 @@ erDiagram
         int vida
         int nivelMagia
     }
+    HECHIZOS {
+        int id PK
+        String tipo       
+    }
+    MAGO_HECHIZOS {
+        int mago_id FK
+        int hechizo_id FK
+    }
+
     MONSTRUO {
         int id PK
         String nombre
@@ -110,19 +142,33 @@ erDiagram
         String tipo
         int fuerza
     }
+
     BOSQUE {
         int id PK
         String nombre
         int nivelPeligro
+        int monstruo_jefe_id FK
+        int dragon_id FK
+    }
+    BOSQUE_MONSTRUOS {
+        int bosque_id FK
         int monstruo_id FK
     }
 
-    BOSQUE ||--o{ MONSTRUO : contiene
+    DRAGON {
+        int id PK
+        String nombre
+        int intensidadFuego
+        int resistencia
+    }
+
+    %% Relaciones (expresadas textualmente)
+    MAGO ||--o{ MAGO_HECHIZOS : tiene
+    HECHIZOS ||--o{ MAGO_HECHIZOS : pertenece_a
+
+    BOSQUE ||--o{ BOSQUE_MONSTRUOS : tiene
+    MONSTRUO ||--o{ BOSQUE_MONSTRUOS : habita_en
+
+    BOSQUE }o--|| MONSTRUO : "monstruo_jefe (FK)"
+    BOSQUE }o--|| DRAGON : "dragon (FK)" 
 ```
-
-
-
-### Pendiente de implementar
-1:n bosque - monstruo
-singleton para sessiones
-Un Dragón habita en un Bosque.

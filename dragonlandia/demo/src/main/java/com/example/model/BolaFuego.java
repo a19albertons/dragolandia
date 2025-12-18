@@ -20,5 +20,6 @@ public class BolaFuego extends Hechizo {
             monstruo.setVida(monstruo.getVida() - 50);
         }
     }
+
     
 }

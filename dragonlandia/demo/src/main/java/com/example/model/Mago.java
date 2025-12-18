@@ -1,13 +1,13 @@
 package com.example.model;
 
 import java.util.List;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.CascadeType;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -38,7 +38,7 @@ public class Mago {
     /**
      * Hechizos del mago
      */
-    @OneToMany
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private List<Hechizo> conjuros;
 
     /**
@@ -142,10 +142,11 @@ public class Mago {
      * @param vida
      * @param nivelMagia
      */
-    public Mago(String nombre, int vida, int nivelMagia) {
+    public Mago(String nombre, int vida, int nivelMagia, List<Hechizo> conjuros) {
         this.nombre = nombre;
         this.vida = vida;
         this.nivelMagia = nivelMagia;
+        this.conjuros = conjuros;
     }
 
     /**
@@ -176,7 +177,8 @@ public class Mago {
      */
     @Override
     public String toString() {
-        return "Mago [id=" + id + ", nombre=" + nombre + ", vida=" + vida + ", nivelMagia=" + nivelMagia + "]";
+        return "Mago [id=" + id + ", nombre=" + nombre + ", vida=" + vida + ", nivelMagia=" + nivelMagia + ", conjuros="
+                + conjuros.size() + "]";
     }
 
 }
