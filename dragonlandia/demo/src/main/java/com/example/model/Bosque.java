@@ -3,6 +3,7 @@ package com.example.model;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -39,7 +40,7 @@ public class Bosque {
     /**
      * Lista de monstruos que habitan en el bosque
      */
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Monstruo> listaMonstruos;
 
     /**
@@ -153,7 +154,8 @@ public class Bosque {
      * @param listaMonstruos
      * @param dragon
      */
-    public Bosque(String nombre, int nivelPeligro, Monstruo monstruoJefe, List<Monstruo> listaMonstruos, Dragon dragon) {
+    public Bosque(String nombre, int nivelPeligro, Monstruo monstruoJefe, List<Monstruo> listaMonstruos,
+            Dragon dragon) {
         this.nombre = nombre;
         this.nivelPeligro = nivelPeligro;
         this.monstruoJefe = monstruoJefe;
@@ -190,7 +192,7 @@ public class Bosque {
     @Override
     public String toString() {
         return "Bosque [id=" + id + ", nombre=" + nombre + ", nivelPeligro=" + nivelPeligro + ", monstruoJefe="
-                + monstruoJefe + "]";
+                + monstruoJefe + ", listaMonstruos=" + listaMonstruos + ", dragon=" + dragon + "]";
     }
 
 }

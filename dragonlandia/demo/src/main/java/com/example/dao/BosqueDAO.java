@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 
 import com.example.controlador.HibernateSingleton;
 import com.example.model.Bosque;
+import com.example.model.Dragon;
 import com.example.model.Monstruo;
 
 /**
@@ -99,18 +100,44 @@ public class BosqueDAO {
         return listaBosques;
     }
 
+    /**
+     * Obtiene los monstruos que no estan asignados a ningun bosque.
+     * 
+     * @return
+     */
     public List<Monstruo> obtenerMonstruosSinBosque() {
         List<Monstruo> listaMonstruos = new ArrayList<>();
         try (Session session = hibernateSingleton.openSession()) {
-            listaMonstruos = session.createQuery("select m from Monstruo m where m is not (select b.listaMonstruos from Bosque b)", Monstruo.class).list();
-        }
-        catch (Exception e) {
+            listaMonstruos = session
+                    .createQuery("select m from Monstruo m where m not in (select mo from Bosque b join b.listaMonstruos mo)",
+                            Monstruo.class)
+                    .list();
+        } catch (Exception e) {
             System.out.println("Error al obtener monstruos sin bosque");
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         }
 
-
         return listaMonstruos;
+    }
+
+    /**
+     * Obtiene los dragones que no estan asignados a ningun bosque.
+     * 
+     * @return
+     */
+    public List<Dragon> obtenerDragonesSinBosque() {
+        List<Dragon> listaDragones = new ArrayList<>();
+        try (Session session = hibernateSingleton.openSession()) {
+            listaDragones = session
+                    .createQuery("select d from Dragon d where d not in (select dr from Bosque b join b.dragon dr )", Dragon.class)
+                    .list();
+        } catch (Exception e) {
+            System.out.println("Error al obtener dragones sin bosque");
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause());
+        }
+
+        return listaDragones;
     }
 }

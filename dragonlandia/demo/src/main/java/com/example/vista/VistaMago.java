@@ -80,4 +80,40 @@ public class VistaMago {
         System.out.println(
                 "El mago tiene los siguiente datos" + controlador.getControladorMago().getMago().toString());
     }
+    
+    /**
+     * Muestra todos los magos del sistema
+     */
+    public void listarMagos() {
+        // Listar todos los magos
+        System.out.println("Listado de magos disponibles:");
+        List<Mago> listaMagos = controlador.getControladorMago().obtenerTodosMagos();
+        for (Mago mago : listaMagos) {
+            System.out.println(mago.toString());
+        }
+    }
+
+    public void borrarMago() {
+        // Borrar un mago
+        System.out.println("Menu que gestiona el borrado de un mago");
+
+        // Pide el mago a borrar
+        System.out.println("Selecciones un mago del listado siguiente:");
+        List<Mago> listaMagos = controlador.getControladorMago().obtenerTodosMagos();
+        for (int i = 0; i < listaMagos.size(); i++) {
+            System.out.println(i + ": " + listaMagos.get(i).toString());
+        }
+
+        // Intenta borrar el mago seleccionado por el usuario
+        int indiceMago;
+        try {
+            indiceMago = Integer.parseInt(scanner.nextLine());
+            controlador.getControladorMago().setMago(listaMagos.get(indiceMago));
+            controlador.getControladorMago().borrarMago();
+            System.out.println("Mago borrado exitosamente.");
+        } catch (NumberFormatException | IndexOutOfBoundsException e) {
+            System.out.println("Error: Formato numérico incorrecto o índice fuera de rango. No se puede borrar el mago.");
+            System.out.println(e.getMessage());
+        }
+    }
 }

@@ -9,11 +9,6 @@ Tarea de Cristina donde debemos crear una aplicación Java en VSCode, Maven e Hi
 ### Diagrama de clases
 
 ``` Mermaid
----
-config:
-  look: classic
-  theme: mc
----
 classDiagram
 class Mago {
   -int id
@@ -43,6 +38,7 @@ class Bosque {
   -Dragon dragon
   +mostrarJefe() : void
   +cambiarJefe(Monstruo) : void
+  +addMonstruo(Monstruo) : void
 }
 
 class Dragon {
@@ -64,38 +60,6 @@ class Rayo
 class BolaNieve
 class Intimidacion
 
-class ControladorMago {
-  -Mago mago
-  +crearHechizoPorNombre(String) : Hechizo
-  +guardarMago() : void
-  
-}
-class ControladorMonstruo {
-  -Monstruo monstruo
-  +guardarMonstruo() : void
-  
-}
-class ControladorBosque {
-  -Bosque bosque
-  +obtenerMonstruosSinBosque() : List~Monstruo~
-  +guardarBosque() : void
-  
-}
-class ControladorBatalla {
-  
-}
-class ControladorDragon {
-  -Dragon dragon
-  
-}
-class Controlador {
-  -ControladorMago controladorMago
-  -ControladorMonstruo controladorMonstruo
-  -ControladorBosque controladorBosque
-  -ControladorBatalla controladorBatalla
-  -ControladorDragon controladorDragon
-}
-
 Mago --> Hechizo : 1..*
 Bosque --> Monstruo : 1..*
 Bosque --> Monstruo : 1 [monstruoJefe]
@@ -104,16 +68,6 @@ Hechizo <|-- BolaFuego
 Hechizo <|-- Rayo
 Hechizo <|-- BolaNieve
 Hechizo <|-- Intimidacion
-
-ControladorMago --> Mago
-ControladorMonstruo --> Monstruo
-ControladorBosque --> Bosque
-ControladorDragon --> Dragon
-Controlador --> ControladorMago
-Controlador --> ControladorMonstruo
-Controlador --> ControladorBosque
-Controlador --> ControladorBatalla
-Controlador --> ControladorDragon
 ``` 
 ## Diseño
 ### Diagrama entidad relacion

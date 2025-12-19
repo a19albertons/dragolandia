@@ -1,5 +1,6 @@
 package com.example.vista;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.example.controlador.Controlador;
@@ -83,5 +84,39 @@ public class VistaMonstruo {
         // Mostrar los datos del monstruo
         System.out.println("El monstruo tiene los siguiente datos"
                 + controlador.getControladorMonstruo().getMonstruo().toString());
+    }
+
+    /**
+     * Muestra todos los monstruos del sistema
+     */
+    public void listarMonstruos() {
+        System.out.println("Listado de monstruos disponibles:");
+        List<Monstruo> listaMonstruos = controlador.getControladorMonstruo().obtenerTodosMonstruos();
+        for (Monstruo m : listaMonstruos) {
+            System.out.println(m.toString());
+        }
+    }
+
+    /**
+     * Borra un monstruo seleccionado por el usuario
+     */
+    public void borrarMonstruo() {
+        System.out.println("Menu que gestiona el borrado de un monstruo");
+        System.out.println("Selecciones un monstruo del listado siguiente:");
+        List<Monstruo> listaMonstruos = controlador.getControladorMonstruo().obtenerTodosMonstruos();
+        for (int i = 0; i < listaMonstruos.size(); i++) {
+            System.out.println(i + ": " + listaMonstruos.get(i).toString());
+        }
+
+        int indiceMonstruo;
+        try {
+            indiceMonstruo = Integer.parseInt(scanner.nextLine());
+            controlador.getControladorMonstruo().setMonstruo(listaMonstruos.get(indiceMonstruo));
+            controlador.getControladorMonstruo().borrarMonstruo();
+            System.out.println("Monstruo borrado exitosamente.");
+        } catch (NumberFormatException | IndexOutOfBoundsException e) {
+            System.out.println("Error: Formato numérico incorrecto o índice fuera de rango. No se puede borrar el monstruo.");
+            System.out.println(e.getMessage());
+        }
     }
 }

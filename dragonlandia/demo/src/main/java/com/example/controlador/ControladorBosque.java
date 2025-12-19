@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.dao.BosqueDAO;
 import com.example.model.Bosque;
+import com.example.model.Dragon;
 import com.example.model.Monstruo;
 
 /**
@@ -84,6 +85,13 @@ public class ControladorBosque {
         return bosqueDAO.obtenerMonstruosSinBosque();
     }
 
+    /**
+     * Genera una lista de monstruos a partir de una cadena de indices separados por
+     * comas.
+     * 
+     * @param seleccion
+     * @return
+     */
     public List<Monstruo> generarLista(String seleccion) {
         List<Monstruo> listaMonstruos = this.obtenerMonstruosSinBosque();
         String[] indices = seleccion.split(",");
@@ -92,7 +100,7 @@ public class ControladorBosque {
             try {
                 int idx = Integer.parseInt(indice.trim());
                 devolver.add(listaMonstruos.get(idx));
-            } catch (NumberFormatException| IndexOutOfBoundsException e) {
+            } catch (NumberFormatException | IndexOutOfBoundsException e) {
                 System.out.println("Indice invalido: " + indice);
                 System.out.println(e.getMessage());
                 System.out.println(e.getCause());
@@ -102,4 +110,34 @@ public class ControladorBosque {
 
     }
 
+    /**
+     * Obtiene los dragones que no estan asignados a ningun bosque.
+     * 
+     * @return
+     */
+    public List<Dragon> obtenerDragonesSinBosque() {
+        BosqueDAO bosqueDAO = new BosqueDAO();
+        return bosqueDAO.obtenerDragonesSinBosque();
+    }
+
+    /**
+     * Añade un monstruo a un bosque existente.
+     * 
+     * @param bosqueSeleccionado
+     * @param monstruoSeleccionado
+     */
+    public void anadirMonstruoABosque(Bosque bosqueSeleccionado, Monstruo monstruoSeleccionado) {
+        bosqueSeleccionado.addMonstruo(monstruoSeleccionado);
+    }
+
+    /**
+     * Monstruos bosque
+     */
+    public List<Monstruo> obtenerMonstruosBosque() {
+        return this.bosque.getListaMonstruos();
+    }
+
+    public void cambiarMonstruoJefe(Bosque bosqueSeleccionado, Monstruo nuevoMonstruoJefe) {
+        bosqueSeleccionado.cambiarJefe(nuevoMonstruoJefe);
+    }
 }

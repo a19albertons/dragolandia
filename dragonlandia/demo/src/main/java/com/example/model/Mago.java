@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -38,7 +39,7 @@ public class Mago {
     /**
      * Hechizos del mago
      */
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
     private List<Hechizo> conjuros;
 
     /**

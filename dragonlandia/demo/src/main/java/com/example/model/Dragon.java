@@ -32,6 +32,24 @@ public class Dragon {
     private int resistencia;
 
     /**
+     * Obtiene el id del dragon.
+     * 
+     * @return
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Establece el id del dragon.
+     * 
+     * @param id
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
      * Obtiene el nombre del dragon.
      * 
      * @return
@@ -104,8 +122,19 @@ public class Dragon {
         this.resistencia = resistencia;
     }
 
+    /**
+     * Ataque del dragon
+     * 
+     * @param monstruo
+     */
     public void exhalar(Monstruo monstruo) {
         monstruo.setVida(monstruo.getVida() - this.intensidadFuego);
     }
-    
+
+    @Override
+    public String toString() {
+        return "Dragon [id=" + id + ", nombre=" + nombre + ", intensidadFuego=" + intensidadFuego + ", resistencia="
+                + resistencia + "]";
+    }
+
 }

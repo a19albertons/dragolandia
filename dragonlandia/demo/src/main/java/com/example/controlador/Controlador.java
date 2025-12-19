@@ -1,5 +1,7 @@
 package com.example.controlador;
 
+import com.example.vista.Vista;
+
 /**
  * Clase que actua como controlador entre la vista y el modelo.
  */
@@ -24,6 +26,10 @@ public class Controlador {
      * Controlador de la batalla
      */
     private ControladorBatalla controladorBatalla;
+    /**
+     * Vista que interactúa con el usuario
+     */
+    private Vista vista;
     
     /**
      * Constructor por defecto que inicializa los subcontroladores del mago,
@@ -35,6 +41,7 @@ public class Controlador {
         this.controladorDragon = new ControladorDragon();
         this.controladorBosque = new ControladorBosque();
         this.controladorBatalla = new ControladorBatalla();
+        this.vista = new Vista(this);
     }
 
     /**
@@ -133,6 +140,11 @@ public class Controlador {
      */
     public boolean compararVida() {
         return this.controladorMago.getMago().getVida() > this.controladorMonstruo.getMonstruo().getVida();
+    }
+
+    public void iniciarJuego() {
+        vista.bienvenida();
+        vista.menu();
     }
 
 }
