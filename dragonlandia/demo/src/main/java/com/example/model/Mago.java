@@ -1,5 +1,6 @@
 package com.example.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -166,9 +167,11 @@ public class Mago {
      * @param hechizo
      */
     public void lanzarHechizo(Monstruo monstruo, Hechizo hechizo) {
-        if (this.conjuros.contains(hechizo)) {
-            monstruo.setVida(monstruo.getVida() - this.nivelMagia);
+        if (this.conjuros != null && this.conjuros.contains(hechizo)) {
+            // Aplicamos el efecto real del hechizo sobre el monstruo
+            hechizo.efecto(Arrays.asList(monstruo));
         } else {
+            // Si el mago intenta usar un hechizo que no conoce, pierde 1 vida
             this.vida = this.vida - 1;
         }
     }

@@ -75,7 +75,8 @@ public class Vista {
             System.out.println("12. Borrar Bosque");
             System.out.println("13. Añadir Monstruo a Bosque");
             System.out.println("14. Cambiar Monstruo Jefe");
-            System.out.println("15. Iniciar Batalla Automatica");
+            System.out.println("15. Iniciar Batalla Automatica (V1)");
+            System.out.println("16. Iniciar Batalla Manual (V2)");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opcion: ");
             try {
@@ -133,9 +134,12 @@ public class Vista {
                     case 15:
                         vistaBatalla.iniciarBatallaAutomatica();
                         break;
+                    case 16:
+                        vistaBatalla.iniciarBatallaManual();
+                        break;
                     case 0:
                         System.out.println("Saliendo del juego. ¡Hasta luego!");
-                        break;
+                        break;  
                     default:
                         System.out.println("Opcion no valida. Intente de nuevo.");
                 }
