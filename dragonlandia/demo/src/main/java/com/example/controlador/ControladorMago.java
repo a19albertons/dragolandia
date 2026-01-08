@@ -102,4 +102,16 @@ public class ControladorMago {
         return magoDAO.obtenerTodosMagos();
     }
 
+    /**
+     * Guarda una lista de magos en la base de datos.
+     * 
+     * @param listaMagos
+     */
+    public void guardarListaMagos(List<Mago> listaMagos) {
+        MagoDAO magoDAO = new MagoDAO();
+        for (Mago mago : listaMagos) {
+            magoDAO.guardarMago(mago);
+        }
+    }
+
 }

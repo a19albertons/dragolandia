@@ -257,4 +257,53 @@ public class VistaBosque {
         }
     }
 
+    /**
+     * Crea un bosque pidiendo algunos datos al usuario y lo devuelve
+     * 
+     * @param dragon
+     * @param listaMonstruos
+     * @return
+     */
+    public Bosque crearBosqueV2(Dragon dragon, List<Monstruo> listaMonstruos) {
+        // Pide el nombre
+        System.out.print("Ingrese el nombre del bosque: ");
+        String nombreBosque = scanner.nextLine();
+
+        // Pide el nivel de peligro
+        System.out.print("Ingrese el nivel de peligro del bosque: ");
+        int nivelPeligroBosque;
+        try {
+            nivelPeligroBosque = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 5");
+            nivelPeligroBosque = 5;
+            System.out.println(e.getMessage());
+        }
+
+        // Indica los monstruos disponibles para ser jefe del bosque
+        System.out.println("Seleccione el listado de monstruos:");
+        for (int i = 0; i < listaMonstruos.size(); i++) {
+            System.out.println(i + ": " + listaMonstruos.get(i).toString());
+        }
+
+        int indiceMonstruo;
+        Monstruo monstruoJefe;
+        try {
+            System.out.print("Ingrese el índice del monstruo jefe del bosque: ");
+            indiceMonstruo = Integer.parseInt(scanner.nextLine());
+            monstruoJefe = listaMonstruos.get(indiceMonstruo);
+        } catch (NumberFormatException | IndexOutOfBoundsException e) {
+            System.out.println(
+                    "Error: Formato numérico incorrecto o índice fuera de rango. Se selecciona el primer monstruo por defecto.");
+            indiceMonstruo = 0;
+            monstruoJefe = listaMonstruos.get(indiceMonstruo);
+            System.out.println(e.getMessage());
+        }
+
+        // Crear y guardar bosque
+        Bosque bosque = new Bosque(nombreBosque, nivelPeligroBosque, monstruoJefe, listaMonstruos, dragon);
+        return bosque;
+
+    }
+
 }

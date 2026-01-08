@@ -137,7 +137,23 @@ public class ControladorBosque {
         return this.bosque.getListaMonstruos();
     }
 
+    /**
+     * Cambia el monstruo jefe de un bosque.
+     * 
+     * @param bosqueSeleccionado
+     * @param nuevoMonstruoJefe
+     */
     public void cambiarMonstruoJefe(Bosque bosqueSeleccionado, Monstruo nuevoMonstruoJefe) {
         bosqueSeleccionado.cambiarJefe(nuevoMonstruoJefe);
+    }
+
+    /**
+     * Guarda el bosque pasado como parámetro.
+     * 
+     * @param bosque2
+     */
+    public void guardarBosque(Bosque bosque2) {
+        BosqueDAO bosqueDAO = new BosqueDAO();
+        bosqueDAO.guardarBosque(bosque2);
     }
 }

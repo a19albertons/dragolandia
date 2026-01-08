@@ -66,4 +66,14 @@ public class ControladorDragon {
         return dragonDAO.obtenerTodosDragones();
     }
 
+    /**
+     * Guarda el dragon pasado como parámetro.
+     * 
+     * @param dragon2
+     */
+    public void guardarDragon(Dragon dragon2) {
+        DragonDAO dragonDAO = new DragonDAO();
+        dragonDAO.guardarDragon(dragon2);
+    }
+
 }

@@ -101,4 +101,37 @@ public class VistaDragon {
         }
     }
 
+    public Dragon crearDragonV2() {
+        // Pide el nombre
+        System.out.print("Ingresar el nombre del dragon:");
+        String nombreDragon = scanner.nextLine();
+
+        // Pide la intensidad de fuego
+        System.out.print("Ingresar la intensidad de fuego del dragon:");
+        int intensidadFuego;
+        try {
+            intensidadFuego = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 10");
+            intensidadFuego = 10;
+            System.out.println(e.getMessage());
+        }
+
+        // Pide la resistencia
+        System.out.print("Ingresar la resistencia del dragon:");
+        int resistencia;
+        try {
+            resistencia = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 50");
+            resistencia = 50;
+            System.out.println(e.getMessage());
+        }
+
+        // Crear y guardar dragon
+        Dragon dragon = new Dragon(nombreDragon, intensidadFuego, resistencia);
+        return dragon;
+        
+    }
+
 } 

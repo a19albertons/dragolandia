@@ -115,8 +115,60 @@ public class VistaMonstruo {
             controlador.getControladorMonstruo().borrarMonstruo();
             System.out.println("Monstruo borrado exitosamente.");
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            System.out.println("Error: Formato numérico incorrecto o índice fuera de rango. No se puede borrar el monstruo.");
+            System.out.println(
+                    "Error: Formato numérico incorrecto o índice fuera de rango. No se puede borrar el monstruo.");
             System.out.println(e.getMessage());
         }
+    }
+
+    /**
+     * Crea un monstruo pidiendo los datos al usuario y lo devuelve
+     * 
+     * @return
+     */
+    public Monstruo crearMonstruoV2() {
+        // Pide el nombre
+        System.out.print("Ingresar el nombre del monstruo:");
+        String nombreMonstruo = scanner.nextLine();
+
+        // Pide la vida
+        System.out.print("Ingresar la vida del monstruo:");
+        int vidaMostruo;
+        try {
+            vidaMostruo = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 50");
+            vidaMostruo = 50;
+            System.out.println(e.getMessage());
+        }
+
+        // Pide la fuerza
+        System.out.print("Ingresar la fuerza del monstruo:");
+        int fuerzaMonstruo;
+        try {
+            fuerzaMonstruo = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 10");
+            fuerzaMonstruo = 10;
+            System.out.println(e.getMessage());
+        }
+
+        // Pide el tipo de monstruo
+        TipoMonstruo tipoMonstruo;
+        System.out.println("Ingresar el tipo de monstruo (OGRO, TROLL, ESPECTRO):");
+        try {
+            String tipoInput = scanner.nextLine().toUpperCase();
+            tipoMonstruo = TipoMonstruo.valueOf(tipoInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: Tipo de monstruo inválido. Se asigna el valor por defecto OGRO");
+            tipoMonstruo = TipoMonstruo.OGRO;
+            System.out.println(e.getMessage());
+        }
+        System.out.println();
+
+        // Crear el monstruo
+        Monstruo monstruo = new Monstruo(nombreMonstruo, vidaMostruo, tipoMonstruo,
+                fuerzaMonstruo);
+        return monstruo;
     }
 }

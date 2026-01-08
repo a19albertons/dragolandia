@@ -76,4 +76,16 @@ public class ControladorMonstruo {
         return monstruoDAO.obtenerTodosMonstruos();
     }
 
+    /**
+     * Guarda una lista de monstruos utilizando el MonstruoDAO.
+     * 
+     * @param listaMonstruos
+     */
+    public void guardarListaMonstruos(List<Monstruo> listaMonstruos) {
+        MonstruoDAO monstruoDAO = new MonstruoDAO();
+        for (Monstruo monstruo : listaMonstruos) {
+            monstruoDAO.guardarMonstruo(monstruo);
+        }
+    }
+
 }

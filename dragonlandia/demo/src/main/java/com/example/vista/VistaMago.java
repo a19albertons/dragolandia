@@ -80,7 +80,7 @@ public class VistaMago {
         System.out.println(
                 "El mago tiene los siguiente datos" + controlador.getControladorMago().getMago().toString());
     }
-    
+
     /**
      * Muestra todos los magos del sistema
      */
@@ -112,8 +112,65 @@ public class VistaMago {
             controlador.getControladorMago().borrarMago();
             System.out.println("Mago borrado exitosamente.");
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            System.out.println("Error: Formato numérico incorrecto o índice fuera de rango. No se puede borrar el mago.");
+            System.out
+                    .println("Error: Formato numérico incorrecto o índice fuera de rango. No se puede borrar el mago.");
             System.out.println(e.getMessage());
         }
+    }
+
+    /**
+     * Crea un mago pidiendo los datos al usuario y lo devuelve
+     * 
+     * @return
+     */
+    public Mago crearMagoV2() {
+        // Pide el nombre
+        System.out.print("Ingrese el nombre del mago: ");
+        String nombreMago = scanner.nextLine();
+        // Pide la vida
+        System.out.print("Ingrese la vida del mago: ");
+        int vidaMago;
+        try {
+            vidaMago = Integer.parseInt(scanner.nextLine());
+
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 50");
+            vidaMago = 50;
+            System.out.println(e.getMessage());
+        }
+        // Pide el nivel de magia
+        System.out.print("Ingrese el nivel de magia del mago: ");
+        int nivelMagiaMago;
+        try {
+            nivelMagiaMago = Integer.parseInt(scanner.nextLine());
+
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 10");
+            nivelMagiaMago = 10;
+            System.out.println(e.getMessage());
+        }
+        // Pide los hechizos
+        List<Hechizo> hechizos = new ArrayList<>();
+        System.out.println("Escoge los hechizos del mago: (minimo 2 hechizos)");
+        System.out.println("BolaFuego, BolaNieve, Rayo, Intimidacion");
+        System.out.println("Provea la respuesta separada por comas: ");
+        String hechizosInput = scanner.nextLine();
+        String[] hechizosArray = hechizosInput.split(",");
+        for (String hechizoNombre : hechizosArray) {
+            hechizoNombre = hechizoNombre.trim();
+            Hechizo hechizo = controlador.getControladorMago().crearHechizoPorNombre(hechizoNombre);
+            if (hechizo != null) {
+                hechizos.add(hechizo);
+            }
+        }
+        if (hechizos.size() < 2) {
+            System.out.println("Error: Debe seleccionar al menos 2 hechizos. Se asignan hechizos por defecto (BolaFuego y Rayo).");
+            hechizos.clear();
+            hechizos.add(controlador.getControladorMago().crearHechizoPorNombre("BolaFuego"));
+            hechizos.add(controlador.getControladorMago().crearHechizoPorNombre("Rayo"));
+        }
+        // Crear el mago
+        Mago mago = new Mago(nombreMago, vidaMago, nivelMagiaMago, hechizos);
+        return mago;
     }
 }

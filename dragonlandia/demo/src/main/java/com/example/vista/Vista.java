@@ -1,8 +1,14 @@
 package com.example.vista;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.example.controlador.Controlador;
+import com.example.model.Bosque;
+import com.example.model.Dragon;
+import com.example.model.Mago;
+import com.example.model.Monstruo;
 
 /**
  * Clase principal de la vista que interactúa con el usuario.
@@ -77,6 +83,7 @@ public class Vista {
             System.out.println("14. Cambiar Monstruo Jefe");
             System.out.println("15. Iniciar Batalla Automatica (V1)");
             System.out.println("16. Iniciar Batalla Manual (V2)");
+            System.out.println("17. Iniciar Batalla Avanzada (V3)");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opcion: ");
             try {
@@ -136,6 +143,42 @@ public class Vista {
                         break;
                     case 16:
                         vistaBatalla.iniciarBatallaManual();
+                        break;
+                    case 17:
+                        // Crear 2 magos (minimo), 3 monstruos (minimo), 1 dragon y 1 bosque
+                        // Crear magos
+                        String continuar = "continuar";
+                        List<Mago> listaMagos = new ArrayList<>();
+                        while (continuar.equals("continuar")) {
+                            listaMagos.add(vistaMago.crearMagoV2());    
+                            if (listaMagos.size()>=2) {
+                                System.out.println("¿Desea crear otro mago? (escriba 'continuar' para seguir o cualquier otra cosa para terminar)");
+                                continuar = scanner.nextLine();
+                            }
+                        }
+                        // Crear monstruos
+                        continuar = "continuar";
+                        List<Monstruo> listaMonstruos = new ArrayList<>();
+                        while (continuar.equals("continuar")) {
+                            listaMonstruos.add(vistaMonstruo.crearMonstruoV2());    
+                            if (listaMonstruos.size()>=3) {
+                                System.out.println("¿Desea crear otro monstruo? (escriba 'continuar' para seguir o cualquier otra cosa para terminar)");
+                                continuar = scanner.nextLine();
+                            }
+                        }
+                        // Crear dragon
+                        Dragon dragon = vistaDragon.crearDragonV2();
+
+                        // Crear bosque con el dragon, listado monstruos y un monstruo jefe
+                        Bosque bosque = vistaBosque.crearBosqueV2(dragon, listaMonstruos);
+
+                        // Guardar todo lo creado en la base de datos
+                        controlador.getControladorMago().guardarListaMagos(listaMagos);
+                        controlador.getControladorMonstruo().guardarListaMonstruos(listaMonstruos);
+                        controlador.getControladorDragon().guardarDragon(dragon);
+                        controlador.getControladorBosque().guardarBosque(bosque);
+                        
+                        vistaBatalla.iniciarBatallaAvanzada(listaMagos, bosque);
                         break;
                     case 0:
                         System.out.println("Saliendo del juego. ¡Hasta luego!");

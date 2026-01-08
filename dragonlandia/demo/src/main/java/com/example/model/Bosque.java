@@ -140,6 +140,24 @@ public class Bosque {
     }
 
     /**
+     * Obtiene el dragon del bosque.
+     * 
+     * @return
+     */
+    public Dragon getDragon() {
+        return dragon;
+    }
+
+    /**
+     * Establece el dragon del bosque.
+     * 
+     * @param dragon
+     */
+    public void setDragon(Dragon dragon) {
+        this.dragon = dragon;
+    }
+
+    /**
      * constructor vacio para el hibernatte
      */
     public Bosque() {
