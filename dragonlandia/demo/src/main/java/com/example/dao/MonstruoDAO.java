@@ -3,9 +3,8 @@ package com.example.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 
 import com.example.controlador.HibernateSingleton;
 import com.example.model.Monstruo;
@@ -14,16 +13,17 @@ import com.example.model.Monstruo;
  * Clase que gestiona las operaciones de acceso a datos para la entidad Monstruo.
  */
 public class MonstruoDAO {
-    SessionFactory hibernateSingleton = HibernateSingleton.getInstance().getSession();
+    HibernateSingleton hibernateSingleton = HibernateSingleton.getInstance();
 
     /**
      * Guarda el monstruo en la base de datos.
      */
     public void guardarMonstruo(Monstruo monstruo) {
-        Transaction tx = null;
-        try (Session session = hibernateSingleton.openSession();) {
-            tx = session.beginTransaction();
-            session.persist(monstruo);
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.persist(monstruo);
             tx.commit();
         } catch (Exception e) {
             System.out.println("Error");
@@ -33,6 +33,8 @@ public class MonstruoDAO {
             }
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
     }
 
@@ -40,10 +42,11 @@ public class MonstruoDAO {
      * Borrar el monstruo en la base de datos.
      */
     public void borrarMonstruo(Monstruo monstruo) {
-        Transaction tx = null;
-        try (Session session = hibernateSingleton.openSession();) {
-            tx = session.beginTransaction();
-            session.remove(monstruo);
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.remove(monstruo);
             tx.commit();
         } catch (Exception e) {
             System.out.println("Error");
@@ -53,6 +56,8 @@ public class MonstruoDAO {
             }
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
     }
 
@@ -60,10 +65,11 @@ public class MonstruoDAO {
      * Actualiza el monstruo en la base de datos.
      */
     public void actualizarMonstruo(Monstruo monstruo) {
-        Transaction tx = null;
-        try (Session session = hibernateSingleton.openSession();) {
-            tx = session.beginTransaction();
-            session.merge(monstruo);
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.merge(monstruo);
             tx.commit();
         } catch (Exception e) {
             System.out.println("Error");
@@ -73,6 +79,8 @@ public class MonstruoDAO {
             }
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
     }
 
@@ -81,10 +89,11 @@ public class MonstruoDAO {
      */
     public List<Monstruo> obtenerTodosMonstruos() {
         List<Monstruo> listaMonstruos = new ArrayList<>();
-        Transaction tx = null;
-        try (Session session = hibernateSingleton.openSession();) {
-            tx = session.beginTransaction();
-            listaMonstruos = session.createQuery("select m from Monstruo m", Monstruo.class).list();
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            listaMonstruos = em.createQuery("select m from Monstruo m", Monstruo.class).getResultList();
             tx.commit();
         } catch (Exception e) {
             System.out.println("Error");
@@ -94,6 +103,8 @@ public class MonstruoDAO {
             }
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
         return listaMonstruos;
     }

@@ -3,9 +3,8 @@ package com.example.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 
 import com.example.controlador.HibernateSingleton;
 import com.example.model.Bosque;
@@ -16,16 +15,17 @@ import com.example.model.Monstruo;
  * Clase que gestiona las operaciones de acceso a datos para la entidad Bosque.
  */
 public class BosqueDAO {
-    SessionFactory hibernateSingleton = HibernateSingleton.getInstance().getSession();
+    HibernateSingleton hibernateSingleton = HibernateSingleton.getInstance();
 
     /**
      * Guarda el bosque en la base de datos.
      */
     public void guardarBosque(Bosque bosque) {
-        Transaction tx = null;
-        try (Session session = hibernateSingleton.openSession();) {
-            tx = session.beginTransaction();
-            session.persist(bosque);
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.persist(bosque);
             tx.commit();
         } catch (Exception e) {
             System.out.println("Error");
@@ -35,6 +35,8 @@ public class BosqueDAO {
             }
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
     }
 
@@ -42,10 +44,11 @@ public class BosqueDAO {
      * Borrar el bosque en la base de datos.
      */
     public void borrarBosque(Bosque bosque) {
-        Transaction tx = null;
-        try (Session session = hibernateSingleton.openSession();) {
-            tx = session.beginTransaction();
-            session.remove(bosque);
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.remove(bosque);
             tx.commit();
         } catch (Exception e) {
             System.out.println("Error");
@@ -55,6 +58,8 @@ public class BosqueDAO {
             }
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
     }
 
@@ -62,10 +67,11 @@ public class BosqueDAO {
      * Actualiza el bosque en la base de datos.
      */
     public void actualizarBosque(Bosque bosque) {
-        Transaction tx = null;
-        try (Session session = hibernateSingleton.openSession();) {
-            tx = session.beginTransaction();
-            session.merge(bosque);
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.merge(bosque);
             tx.commit();
         } catch (Exception e) {
             System.out.println("Error");
@@ -75,6 +81,8 @@ public class BosqueDAO {
             }
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
     }
 
@@ -83,10 +91,11 @@ public class BosqueDAO {
      */
     public List<Bosque> obtenerTodosBosques() {
         List<Bosque> listaBosques = new ArrayList<>();
-        Transaction tx = null;
-        try (Session session = hibernateSingleton.openSession();) {
-            tx = session.beginTransaction();
-            listaBosques = session.createQuery("select b from Bosque b", Bosque.class).list();
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            listaBosques = em.createQuery("select b from Bosque b", Bosque.class).getResultList();
             tx.commit();
         } catch (Exception e) {
             System.out.println("Error");
@@ -96,6 +105,8 @@ public class BosqueDAO {
             }
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
         return listaBosques;
     }
@@ -107,15 +118,18 @@ public class BosqueDAO {
      */
     public List<Monstruo> obtenerMonstruosSinBosque() {
         List<Monstruo> listaMonstruos = new ArrayList<>();
-        try (Session session = hibernateSingleton.openSession()) {
-            listaMonstruos = session
+        EntityManager em = hibernateSingleton.getEntityManager();
+        try {
+            listaMonstruos = em
                     .createQuery("select m from Monstruo m where m not in (select mo from Bosque b join b.listaMonstruos mo)",
                             Monstruo.class)
-                    .list();
+                    .getResultList();
         } catch (Exception e) {
             System.out.println("Error al obtener monstruos sin bosque");
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
 
         return listaMonstruos;
@@ -128,14 +142,17 @@ public class BosqueDAO {
      */
     public List<Dragon> obtenerDragonesSinBosque() {
         List<Dragon> listaDragones = new ArrayList<>();
-        try (Session session = hibernateSingleton.openSession()) {
-            listaDragones = session
+        EntityManager em = hibernateSingleton.getEntityManager();
+        try {
+            listaDragones = em
                     .createQuery("select d from Dragon d where d not in (select dr from Bosque b join b.dragon dr )", Dragon.class)
-                    .list();
+                    .getResultList();
         } catch (Exception e) {
             System.out.println("Error al obtener dragones sin bosque");
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
 
         return listaDragones;

@@ -1,24 +1,20 @@
 package com.example.controlador;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
-// La clase Database define el método `getInstance` que permite
-// a los clientes acceder a la misma instancia de una conexión
-// a la base de datos en todo el programa.
+// Singleton que expone un EntityManagerFactory y proporciona EntityManagers.
 public class HibernateSingleton {
-    // Campo estático para almacenar la instancia única.
     private static HibernateSingleton instance;
-    private SessionFactory session;
+    private EntityManagerFactory emf;
 
-    // El constructor es privado para evitar llamadas directas con `new`.
     private HibernateSingleton() {
-        this.session = new Configuration().configure().buildSessionFactory();
-
-        
+        // Usa la unidad de persistencia definida en `persistence.xml`
+        this.emf = Persistence.createEntityManagerFactory("dragolandiaServizo");
+    
     }
 
-    // Método estático que controla el acceso a la instancia del Singleton.
     public static HibernateSingleton getInstance() {
         if (instance == null) {
             synchronized (HibernateSingleton.class) {
@@ -30,9 +26,13 @@ public class HibernateSingleton {
         return instance;
     }
 
-    public SessionFactory getSession() {
-        return session;
+    public EntityManager getEntityManager() {
+        return emf.createEntityManager();
     }
 
-    
+    public void close() {
+        if (emf != null && emf.isOpen()) {
+            emf.close();
+        }
+    }
 }

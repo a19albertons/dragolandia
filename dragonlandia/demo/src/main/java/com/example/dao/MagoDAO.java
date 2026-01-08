@@ -3,9 +3,8 @@ package com.example.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 
 import com.example.controlador.HibernateSingleton;
 import com.example.model.Mago;
@@ -14,16 +13,17 @@ import com.example.model.Mago;
  * Clase que gestiona las operaciones de acceso a datos para la entidad Mago.
  */
 public class MagoDAO {
-    SessionFactory hibernateSingleton = HibernateSingleton.getInstance().getSession();
+    HibernateSingleton hibernateSingleton = HibernateSingleton.getInstance();
 
     /**
      * Guarda el mago en la base de datos.
      */
     public void guardarMago(Mago mago) {
-        Transaction tx = null;
-        try (Session session = hibernateSingleton.openSession();) {
-            tx = session.beginTransaction();
-            session.persist(mago);
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.persist(mago);
             tx.commit();
         } catch (Exception e) {
             System.out.println("Error");
@@ -33,6 +33,8 @@ public class MagoDAO {
             }
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
     }
 
@@ -40,10 +42,11 @@ public class MagoDAO {
      * Borrar el mago en la base de datos.
      */
     public void borrarMago(Mago mago) {
-        Transaction tx = null;
-        try (Session session = hibernateSingleton.openSession();) {
-            tx = session.beginTransaction();
-            session.remove(mago);
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.remove(mago);
             tx.commit();
         } catch (Exception e) {
             System.out.println("Error");
@@ -53,6 +56,8 @@ public class MagoDAO {
             }
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
     }
 
@@ -60,10 +65,11 @@ public class MagoDAO {
      * Actualiza el mago en la base de datos.
      */
     public void actualizarMago(Mago mago) {
-        Transaction tx = null;
-        try (Session session = hibernateSingleton.openSession();) {
-            tx = session.beginTransaction();
-            session.merge(mago);
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.merge(mago);
             tx.commit();
         } catch (Exception e) {
             System.out.println("Error");
@@ -73,6 +79,8 @@ public class MagoDAO {
             }
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
     }
 
@@ -81,10 +89,11 @@ public class MagoDAO {
      */
     public List<Mago> obtenerTodosMagos() {
         List<Mago> listaMagos = new ArrayList<>();
-        Transaction tx = null;
-        try (Session session = hibernateSingleton.openSession();) {
-            tx = session.beginTransaction();
-            listaMagos = session.createQuery("select m from Mago m", Mago.class).list();
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            listaMagos = em.createQuery("select m from Mago m", Mago.class).getResultList();
             tx.commit();
         } catch (Exception e) {
             System.out.println("Error");
@@ -94,6 +103,8 @@ public class MagoDAO {
             }
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) em.close();
         }
         return listaMagos;
     }
