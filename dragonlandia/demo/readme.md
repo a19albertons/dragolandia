@@ -8,7 +8,7 @@ Tarea de Cristina donde debemos crear una aplicación Java en VSCode, Maven e Hi
 ## Analisis
 ### Diagrama de clases
 
-``` Mermaid
+``` mermaid
 classDiagram
 class Mago {
   -int id
@@ -72,7 +72,7 @@ Hechizo <|-- Intimidacion
 ## Diseño
 ### Diagrama entidad relacion
 
-``` Mermaid
+``` mermaid
 erDiagram
     MAGO {
         int id PK
@@ -126,3 +126,11 @@ erDiagram
     BOSQUE }o--|| MONSTRUO : "monstruo_jefe (FK)"
     BOSQUE }o--|| DRAGON : "dragon (FK)" 
 ```
+
+
+## Amplicacion
+
+- El dragon pueda ser atacado por los monstruos que habitan en el bosque.
+- Que el uso de hechizos cueste puntos de magia al mago.
+- Que los tipos de monstruos tengan resistencias o debilidades frente a ciertos tipos de hechizos.
+- Que el monstruo jefe tenga habilidades especiales.
