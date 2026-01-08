@@ -31,6 +31,10 @@ public class VistaBatalla {
         this.scanner = scanner;
     }
 
+    /**
+     * Inicia una batalla automática entre un mago y el monstruo jefe de un bosque.
+     * Es la version V1 de la batalla.
+     */
     public void iniciarBatallaAutomatica() {
         // Escoger mago
         System.out.println("Seleccione el mago para la batalla:");
@@ -110,6 +114,7 @@ public class VistaBatalla {
 
     /**
      * Inicia una batalla manual donde el usuario decide la accion del mago.
+     * Es la version V2 de la batalla.
      */
     public void iniciarBatallaManual() {
         // Selección de mago (copiado de la versión automática)
