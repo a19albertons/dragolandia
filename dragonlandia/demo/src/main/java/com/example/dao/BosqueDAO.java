@@ -36,7 +36,9 @@ public class BosqueDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
     }
 
@@ -59,7 +61,9 @@ public class BosqueDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
     }
 
@@ -82,7 +86,9 @@ public class BosqueDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
     }
 
@@ -106,9 +112,40 @@ public class BosqueDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
         return listaBosques;
+    }
+
+    /**
+     * Obtiene un bosque por id
+     */
+    public Bosque obtenerBosque(int id) {
+        Bosque bosque = null;
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            bosque = em.createQuery("select b from Bosque b where b.id = :id", Bosque.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+            tx.commit();
+        } catch (Exception e) {
+            System.out.println("Error");
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+                System.out.println("Se hace rollback de la transacción");
+            }
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) {
+                em.close();
+            }
+        }
+        return bosque;
     }
 
     /**
@@ -129,7 +166,9 @@ public class BosqueDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
 
         return listaMonstruos;
@@ -152,7 +191,9 @@ public class BosqueDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
 
         return listaDragones;

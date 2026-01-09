@@ -10,7 +10,8 @@ import com.example.model.Monstruo;
 import com.example.util.HibernateSingleton;
 
 /**
- * Clase que gestiona las operaciones de acceso a datos para la entidad Monstruo.
+ * Clase que gestiona las operaciones de acceso a datos para la entidad
+ * Monstruo.
  */
 public class MonstruoDAO {
     HibernateSingleton hibernateSingleton = HibernateSingleton.getInstance();
@@ -34,7 +35,9 @@ public class MonstruoDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
     }
 
@@ -57,7 +60,9 @@ public class MonstruoDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
     }
 
@@ -80,11 +85,13 @@ public class MonstruoDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
     }
 
-        /**
+    /**
      * Obtiene los monstruos de la base de datos
      */
     public List<Monstruo> obtenerTodosMonstruos() {
@@ -104,8 +111,41 @@ public class MonstruoDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
         return listaMonstruos;
+    }
+
+    /**
+     * Obtiene un monstruo por id
+     * 
+     * @param id
+     */
+    public Monstruo obtenerMonstruo(int id) {
+        Monstruo monstruo = null;
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            monstruo = em.createQuery("select m from Monstruo m where m.id = :id", Monstruo.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+            tx.commit();
+        } catch (Exception e) {
+            System.out.println("Error");
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+                System.out.println("Se hace rollback de la transacción");
+            }
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) {
+                em.close();
+            }
+        }
+        return monstruo;
     }
 }

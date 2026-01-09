@@ -6,7 +6,7 @@
 /home/sanclemente.local/a19albertons/Descargas/dragolandia/dragonlandia/demo/src/main/java/com/example/controlador/Controlador.java
 /home/sanclemente.local/a19albertons/Descargas/dragolandia/dragonlandia/demo/src/main/java/com/example/model/Dragon.java
 /home/sanclemente.local/a19albertons/Descargas/dragolandia/dragonlandia/demo/src/main/java/com/example/model/Mago.java
-/home/sanclemente.local/a19albertons/Descargas/dragolandia/dragonlandia/demo/src/main/java/com/example/controlador/HibernateSingleton.java
+/home/sanclemente.local/a19albertons/Descargas/dragolandia/dragonlandia/demo/src/main/java/com/example/util/HibernateSingleton.java
 /home/sanclemente.local/a19albertons/Descargas/dragolandia/dragonlandia/demo/src/main/java/com/example/vista/VistaDragon.java
 /home/sanclemente.local/a19albertons/Descargas/dragolandia/dragonlandia/demo/src/main/java/com/example/model/Intimidacion.java
 /home/sanclemente.local/a19albertons/Descargas/dragolandia/dragonlandia/demo/src/main/java/com/example/controlador/ControladorBatalla.java

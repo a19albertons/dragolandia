@@ -34,7 +34,9 @@ public class DragonDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
     }
 
@@ -57,7 +59,9 @@ public class DragonDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
     }
 
@@ -80,7 +84,9 @@ public class DragonDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
     }
 
@@ -104,8 +110,39 @@ public class DragonDAO {
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
         } finally {
-            if (em.isOpen()) em.close();
+            if (em.isOpen()) {
+                em.close();
+            }
         }
         return listaDragones;
+    }
+
+    /**
+     * Obtiene un dragon por id
+     */
+    public Dragon obtenerDragon(int id) {
+        Dragon dragon = null;
+        EntityManager em = hibernateSingleton.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            dragon = em.createQuery("select d from Dragon d where d.id = :id", Dragon.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+            tx.commit();
+        } catch (Exception e) {
+            System.out.println("Error");
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+                System.out.println("Se hace rollback de la transacción");
+            }
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause());
+        } finally {
+            if (em.isOpen()) {
+                em.close();
+            }
+        }
+        return dragon;
     }
 }
