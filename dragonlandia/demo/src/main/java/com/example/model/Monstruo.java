@@ -88,6 +88,9 @@ public class Monstruo {
      * @param vida
      */
     public void setVida(int vida) {
+        if (vida < 0) {
+            throw new IllegalArgumentException("La vida no puede ser negativa");    
+        }
         this.vida = vida;
     }
 
@@ -124,6 +127,9 @@ public class Monstruo {
      * @param fuerza
      */
     public void setFuerza(int fuerza) {
+        if (fuerza < 0) {
+            throw new IllegalArgumentException("La fuerza no puede ser negativa");
+        }
         this.fuerza = fuerza;
     }
 
@@ -143,9 +149,9 @@ public class Monstruo {
      */
     public Monstruo(String nombre, int vida, TipoMonstruo tipo, int fuerza) {
         this.nombre = nombre;
-        this.vida = vida;
+        setVida(vida);
         this.tipo = tipo;
-        this.fuerza = fuerza;
+        setFuerza(fuerza);
     }
 
     /**

@@ -92,6 +92,9 @@ public class Mago {
      * @param vida
      */
     public void setVida(int vida) {
+        if (vida < 0) {
+            throw new IllegalArgumentException("La vida no puede ser negativa");
+        }
         this.vida = vida;
     }
 
@@ -110,6 +113,9 @@ public class Mago {
      * @param nivelMagia
      */
     public void setNivelMagia(int nivelMagia) {
+        if (nivelMagia < 0) {
+            throw new IllegalArgumentException("El nivel de magia no puede ser negativo");
+        }
         this.nivelMagia = nivelMagia;
     }
 
@@ -146,8 +152,8 @@ public class Mago {
      */
     public Mago(String nombre, int vida, int nivelMagia, List<Hechizo> conjuros) {
         this.nombre = nombre;
-        this.vida = vida;
-        this.nivelMagia = nivelMagia;
+        setVida(vida);
+        setNivelMagia(nivelMagia);
         this.conjuros = conjuros;
     }
 
