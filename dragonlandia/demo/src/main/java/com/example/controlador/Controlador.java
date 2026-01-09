@@ -142,6 +142,9 @@ public class Controlador {
         return this.controladorMago.getMago().getVida() > this.controladorMonstruo.getMonstruo().getVida();
     }
 
+    /**
+     * Inicia el juego mostrando la bienvenida y el menú principal.
+     */
     public void iniciarJuego() {
         vista.bienvenida();
         vista.menu();

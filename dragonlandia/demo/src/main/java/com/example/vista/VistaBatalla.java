@@ -10,6 +10,9 @@ import com.example.model.Mago;
 import com.example.model.Monstruo;
 import com.example.model.Hechizo;
 
+/**
+ * Vista que maneja las interacciones relacionadas con las batallas.
+ */
 public class VistaBatalla {
 
     /**

@@ -33,6 +33,9 @@ public class VistaMonstruo {
         this.scanner = scanner;
     }
 
+    /**
+     * Crea un monstruo pidiendo los datos al usuario y lo guarda
+     */
     public void crearMonstruo() {
         // Crea un monstruo
         System.out.println("Menu que gestiona la creacion de un monstruo");

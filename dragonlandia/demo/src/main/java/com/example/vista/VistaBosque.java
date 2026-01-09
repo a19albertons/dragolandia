@@ -8,6 +8,9 @@ import com.example.model.Bosque;
 import com.example.model.Dragon;
 import com.example.model.Monstruo;
 
+/**
+ * Vista que maneja las interacciones relacionadas con los bosques.
+ */
 public class VistaBosque {
 
     /**
@@ -31,6 +34,9 @@ public class VistaBosque {
         this.scanner = scanner;
     }
 
+    /**
+     * Crea un bosque pidiendo algunos datos al usuario y lo guarda
+     */
     public void crearBosque() {
         // Crear un bosque
         System.out.println("Menu que gestiona la creacion de un bosque");
@@ -201,6 +207,9 @@ public class VistaBosque {
         }
     }
 
+    /**
+     * Permite cambiar el monstruo jefe de un bosque existente
+     */
     public void cambiarJefeMonstruo() {
         boolean errorCritico = false;
         System.out.println("Menu que gestiona el cambio del monstruo jefe de un bosque");

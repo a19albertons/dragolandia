@@ -59,10 +59,16 @@ public class Vista {
 
     }
 
+    /**
+     * Muestra un mensaje de bienvenida al usuario.
+     */
     public void bienvenida() {
         System.out.println("Bienvenido a Dragonlandia!");
     }
 
+    /**
+     * Muestra el menú principal y maneja las opciones del usuario.
+     */
     public void menu() {
         int opcion = -1;
         while (opcion != 0) {

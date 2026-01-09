@@ -8,6 +8,9 @@ import com.example.controlador.Controlador;
 import com.example.model.Hechizo;
 import com.example.model.Mago;
 
+/**
+ * Vista que maneja las interacciones relacionadas con los magos.
+ */
 public class VistaMago {
     /**
      * Controlador que maneja la lógica del mago
@@ -29,6 +32,9 @@ public class VistaMago {
         this.scanner = scanner;
     }
 
+    /**
+     * Crea un mago pidiendo los datos al usuario y lo guarda
+     */
     public void crearMago() {
         // Crear un mago
         System.out.println("Menu que gestiona la creacion de un mago");
@@ -93,6 +99,9 @@ public class VistaMago {
         }
     }
 
+    /**
+     * Borra un mago seleccionado por el usuario
+     */
     public void borrarMago() {
         // Borrar un mago
         System.out.println("Menu que gestiona el borrado de un mago");

@@ -6,6 +6,9 @@ import java.util.Scanner;
 import com.example.controlador.Controlador;
 import com.example.model.Dragon;
 
+/**
+ * Vista que maneja las interacciones relacionadas con los dragones.
+ */
 public class VistaDragon {
 
     /**
@@ -29,6 +32,9 @@ public class VistaDragon {
         this.scanner = scanner;
     }
 
+    /**
+     * Crea un dragón pidiendo datos al usuario y lo guarda
+     */
     public void crearDragon() {
         // Crea un dragon
         System.out.println("Menu que gestiona la creacion de un dragon");
@@ -96,11 +102,17 @@ public class VistaDragon {
             controlador.getControladorDragon().borrarDragon();
             System.out.println("Dragon borrado exitosamente.");
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            System.out.println("Error: Formato numérico incorrecto o índice fuera de rango. No se puede borrar el dragon.");
+            System.out.println(
+                    "Error: Formato numérico incorrecto o índice fuera de rango. No se puede borrar el dragon.");
             System.out.println(e.getMessage());
         }
     }
 
+    /**
+     * Crea un dragón pidiendo datos al usuario y lo devuelve
+     * 
+     * @return
+     */
     public Dragon crearDragonV2() {
         // Pide el nombre
         System.out.print("Ingresar el nombre del dragon:");
@@ -131,7 +143,7 @@ public class VistaDragon {
         // Crear y guardar dragon
         Dragon dragon = new Dragon(nombreDragon, intensidadFuego, resistencia);
         return dragon;
-        
+
     }
 
-} 
+}
