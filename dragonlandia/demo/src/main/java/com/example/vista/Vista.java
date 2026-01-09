@@ -190,6 +190,8 @@ public class Vista {
                 System.out.println("Error en la ejecución inesperado de la opcion " + opcion);
                 System.out.println(e.getMessage());
                 System.out.println(e.getCause());
+                // Muestra todo el error en cascada para investigar en que linea especifica de nuestro codigo ha fallado puede ser util en este caso
+                e.printStackTrace();
             }
 
         }
