@@ -169,7 +169,7 @@ public class Vista {
                         // Crear dragon
                         Dragon dragon = vistaDragon.crearDragonV2();
 
-                        // Crear bosque con el dragon, listado monstruos y un monstruo jefe
+                        // Crear bosque con el dragon, listado monstruos y pregunta por un monstruo jefe
                         Bosque bosque = vistaBosque.crearBosqueV2(dragon, listaMonstruos);
 
                         // Guardar todo lo creado en la base de datos

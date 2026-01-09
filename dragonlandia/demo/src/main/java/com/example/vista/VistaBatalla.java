@@ -323,7 +323,8 @@ public class VistaBatalla {
                     System.out.println(e.getCause());
                 }
                 // Comprobamos si quedan monstruos vivos
-                if (controlador.getControladorBosque().obtenerMonstruosBosque().stream().allMatch(m -> m.getVida() <= 0)) {
+                if (controlador.getControladorBosque().obtenerMonstruosBosque().stream()
+                        .allMatch(m -> m.getVida() <= 0)) {
                     finalizar = true;
                     monstruos = false;
                     break;
@@ -353,11 +354,10 @@ public class VistaBatalla {
                 Random rand = new Random();
                 if (listaMagos.stream().filter(m -> m.getVida() > 0).count() >= 2) {
                     magoSeleccionado = listaMagos.get(rand.nextInt(listaMagos.size()));
-                }
-                else {
+                } else {
                     magoSeleccionado = listaMagos.stream().filter(m -> m.getVida() > 0).findFirst().get();
                 }
-                
+
                 controlador.getControladorMago().setMago(magoSeleccionado);
                 // Monstruo ataca al mago
                 controlador.getControladorMonstruo().getMonstruo()
@@ -382,7 +382,8 @@ public class VistaBatalla {
             // Comprobamos el monstruo jefe
             if (controlador.getControladorBosque().getBosque().getMonstruoJefe().getVida() <= 0) {
                 // Escoger otro monstruo con vida, si hay
-                List<Monstruo> monstruosVivos = controlador.getControladorBosque().getBosque().getListaMonstruos().stream()
+                List<Monstruo> monstruosVivos = controlador.getControladorBosque().getBosque().getListaMonstruos()
+                        .stream()
                         .filter(m -> m.getVida() > 0)
                         .toList();
                 if (monstruosVivos.isEmpty()) {
@@ -405,6 +406,8 @@ public class VistaBatalla {
             for (Monstruo monstruo : controlador.getControladorBosque().obtenerMonstruosBosque()) {
                 System.out.println(monstruo.getNombre() + " - Vida: " + monstruo.getVida());
             }
+            System.out.println("Monstruo jefe actual: "
+                    + controlador.getControladorBosque().getBosque().getMonstruoJefe().getNombre());
 
             // Verificar si estan vivos los magos y monstruos
             if (listaMagos.stream().allMatch(m -> m.getVida() <= 0)) {
