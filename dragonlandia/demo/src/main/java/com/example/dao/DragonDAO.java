@@ -6,8 +6,8 @@ import java.util.List;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
-import com.example.controlador.HibernateSingleton;
 import com.example.model.Dragon;
+import com.example.util.HibernateSingleton;
 
 /**
  * Clase que gestiona las operaciones de acceso a datos para la entidad Dragon.
