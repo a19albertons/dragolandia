@@ -28,8 +28,8 @@ public class VistaBatalla {
     /**
      * Constructor de la vista de la batalla
      * 
-     * @param controlador
-     * @param scanner
+     * @param controlador controlador
+     * @param scanner     scanner
      */
     public VistaBatalla(Controlador controlador, Scanner scanner) {
         this.controlador = controlador;
@@ -112,6 +112,7 @@ public class VistaBatalla {
                 System.out.println(e.getCause());
             }
         }
+        // Resultado final
         if (controlador.compararVida()) {
             System.out.println("El mago ha ganado la batalla y domina el bosque!");
         } else {
@@ -171,8 +172,10 @@ public class VistaBatalla {
             System.out.println();
             System.out.println("Turno del mago. Vida mago: " + controlador.getControladorMago().getMago().getVida()
                     + " - Vida monstruo: " + controlador.getControladorMonstruo().getMonstruo().getVida());
+            // Tipo ataque mago
             System.out.println("Elige una accion: 1) Ataque normal  2) Usar hechizo");
             String opcion = scanner.nextLine();
+            // El mago ataca al monstruo
             if ("1".equals(opcion)) {
                 controlador.getControladorMago().getMago()
                         .lanzarHechizo(controlador.getControladorMonstruo().getMonstruo());
@@ -184,6 +187,7 @@ public class VistaBatalla {
                     System.out.println("No tienes hechizos. Se realiza un ataque normal en su lugar.");
                     mago.lanzarHechizo(controlador.getControladorMonstruo().getMonstruo());
                 } else {
+                    // Selección de hechizo
                     System.out.println("Elige hechizo:");
                     List<Hechizo> conjuros = mago.getConjuros();
                     for (int i = 0; i < conjuros.size(); i++) {
@@ -227,7 +231,7 @@ public class VistaBatalla {
             }
 
         }
-
+        // Resultado final
         if (controlador.compararVida()) {
             System.out.println("El mago ha ganado la batalla y domina el bosque!");
         } else {
@@ -282,11 +286,13 @@ public class VistaBatalla {
                 // Mago ataca al monstruo
                 System.out.println("Elige una accion: 1) Ataque normal  2) Usar hechizo");
                 String opcion = scanner.nextLine();
+                // opcion ataque normal
                 if ("1".equals(opcion)) {
                     controlador.getControladorMago().getMago()
                             .lanzarHechizo(controlador.getControladorMonstruo().getMonstruo());
                     System.out.println("Atacas al monstruo. Vida del monstruo: "
                             + controlador.getControladorMonstruo().getMonstruo().getVida());
+                    // Ataque con hechizo
                 } else if ("2".equals(opcion)) {
                     if (mago.getConjuros() == null || mago.getConjuros().isEmpty()) {
                         System.out.println("No tienes hechizos. Se realiza un ataque normal en su lugar.");

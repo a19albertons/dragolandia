@@ -24,8 +24,8 @@ public class VistaDragon {
     /**
      * Constructor de la vista del dragón
      * 
-     * @param controlador
-     * @param scanner
+     * @param controlador controlador
+     * @param scanner     scanner
      */
     public VistaDragon(Controlador controlador, Scanner scanner) {
         this.controlador = controlador;
@@ -111,7 +111,7 @@ public class VistaDragon {
     /**
      * Crea un dragón pidiendo datos al usuario y lo devuelve
      * 
-     * @return
+     * @return dragon creado
      */
     public Dragon crearDragonV2() {
         // Pide el nombre

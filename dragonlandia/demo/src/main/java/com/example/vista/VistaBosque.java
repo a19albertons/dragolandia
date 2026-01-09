@@ -26,8 +26,8 @@ public class VistaBosque {
     /**
      * Constructor de la vista del bosque
      * 
-     * @param controlador
-     * @param scanner
+     * @param controlador controlador
+     * @param scanner     scanner
      */
     public VistaBosque(Controlador controlador, Scanner scanner) {
         this.controlador = controlador;
@@ -269,9 +269,9 @@ public class VistaBosque {
     /**
      * Crea un bosque pidiendo algunos datos al usuario y lo devuelve
      * 
-     * @param dragon
-     * @param listaMonstruos
-     * @return
+     * @param dragon         dragon asociado al bosque
+     * @param listaMonstruos lista de monstruos del bosque
+     * @return bosque creado
      */
     public Bosque crearBosqueV2(Dragon dragon, List<Monstruo> listaMonstruos) {
         // Pide el nombre

@@ -5,6 +5,9 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 // Singleton que expone un EntityManagerFactory y proporciona EntityManagers.
+/**
+ * Clase singleton para gestionar la instancia de EntityManagerFactory de Hibernate.
+ */
 public class HibernateSingleton {
     private static HibernateSingleton instance;
     private EntityManagerFactory emf;

@@ -42,6 +42,8 @@ public class DragonDAO {
 
     /**
      * Borrar el dragon en la base de datos.
+     * 
+     * @param dragon dragon a borrar
      */
     public void borrarDragon(Dragon dragon) {
         EntityManager em = hibernateSingleton.getEntityManager();
@@ -67,6 +69,8 @@ public class DragonDAO {
 
     /**
      * Actualiza el dragon en la base de datos.
+     * 
+     * @param dragon dragon a actualizar
      */
     public void actualizarDragon(Dragon dragon) {
         EntityManager em = hibernateSingleton.getEntityManager();

@@ -18,6 +18,8 @@ public class MonstruoDAO {
 
     /**
      * Guarda el monstruo en la base de datos.
+     * 
+     * @param monstruo monstruo a guardar
      */
     public void guardarMonstruo(Monstruo monstruo) {
         EntityManager em = hibernateSingleton.getEntityManager();
@@ -43,6 +45,8 @@ public class MonstruoDAO {
 
     /**
      * Borrar el monstruo en la base de datos.
+     * 
+     * @param monstruo monstruo a borrar
      */
     public void borrarMonstruo(Monstruo monstruo) {
         EntityManager em = hibernateSingleton.getEntityManager();
@@ -68,6 +72,8 @@ public class MonstruoDAO {
 
     /**
      * Actualiza el monstruo en la base de datos.
+     * 
+     * @param monstruo monstruo a actualizar
      */
     public void actualizarMonstruo(Monstruo monstruo) {
         EntityManager em = hibernateSingleton.getEntityManager();
@@ -93,6 +99,8 @@ public class MonstruoDAO {
 
     /**
      * Obtiene los monstruos de la base de datos
+     * 
+     * @return lista de monstruos obtenida
      */
     public List<Monstruo> obtenerTodosMonstruos() {
         List<Monstruo> listaMonstruos = new ArrayList<>();
@@ -122,6 +130,7 @@ public class MonstruoDAO {
      * Obtiene un monstruo por id
      * 
      * @param id
+     * @return monstruo obtenido
      */
     public Monstruo obtenerMonstruo(int id) {
         Monstruo monstruo = null;

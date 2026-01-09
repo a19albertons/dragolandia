@@ -24,8 +24,8 @@ public class VistaMago {
     /**
      * Constructor de la vista del mago
      * 
-     * @param controlador
-     * @param scanner
+     * @param controlador controlador
+     * @param scanner     scanner
      */
     public VistaMago(Controlador controlador, Scanner scanner) {
         this.controlador = controlador;
@@ -130,7 +130,7 @@ public class VistaMago {
     /**
      * Crea un mago pidiendo los datos al usuario y lo devuelve
      * 
-     * @return
+     * @return mago creado
      */
     public Mago crearMagoV2() {
         // Pide el nombre
@@ -173,7 +173,8 @@ public class VistaMago {
             }
         }
         if (hechizos.size() < 2) {
-            System.out.println("Error: Debe seleccionar al menos 2 hechizos. Se asignan hechizos por defecto (BolaFuego y Rayo).");
+            System.out.println(
+                    "Error: Debe seleccionar al menos 2 hechizos. Se asignan hechizos por defecto (BolaFuego y Rayo).");
             hechizos.clear();
             hechizos.add(controlador.getControladorMago().crearHechizoPorNombre("BolaFuego"));
             hechizos.add(controlador.getControladorMago().crearHechizoPorNombre("Rayo"));

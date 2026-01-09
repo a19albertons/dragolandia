@@ -18,7 +18,7 @@ public class ControladorMonstruo {
     /**
      * Obtiene el monstruo.
      * 
-     * @return
+     * @return monstruo obtenido
      */
     public Monstruo getMonstruo() {
         return monstruo;
@@ -27,7 +27,7 @@ public class ControladorMonstruo {
     /**
      * Establece el monstruo.
      * 
-     * @param monstruo
+     * @param monstruo monstruo a establecer
      */
     public void setMonstruo(Monstruo monstruo) {
         this.monstruo = monstruo;
@@ -36,7 +36,7 @@ public class ControladorMonstruo {
     /**
      * Verifica si el monstruo tiene vida.
      * 
-     * @return
+     * @return true si el monstruo tiene vida, false en caso contrario
      */
     public boolean monstruoTieneVida() {
         return this.monstruo.getVida() > 0;
@@ -69,7 +69,7 @@ public class ControladorMonstruo {
     /**
      * Obtiene todos los monstruos utilizando el MonstruoDAO.
      * 
-     * @return
+     * @return lista de todos los monstruos
      */
     public List<Monstruo> obtenerTodosMonstruos() {
         MonstruoDAO monstruoDAO = new MonstruoDAO();
@@ -79,7 +79,7 @@ public class ControladorMonstruo {
     /**
      * Guarda una lista de monstruos utilizando el MonstruoDAO.
      * 
-     * @param listaMonstruos
+     * @param listaMonstruos lista de monstruos a guardar
      */
     public void guardarListaMonstruos(List<Monstruo> listaMonstruos) {
         MonstruoDAO monstruoDAO = new MonstruoDAO();

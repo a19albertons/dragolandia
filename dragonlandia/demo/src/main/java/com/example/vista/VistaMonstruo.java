@@ -25,8 +25,8 @@ public class VistaMonstruo {
     /**
      * Constructor de la vista del monstruo
      * 
-     * @param controlador
-     * @param scanner
+     * @param controlador controlador
+     * @param scanner     scanner
      */
     public VistaMonstruo(Controlador controlador, Scanner scanner) {
         this.controlador = controlador;
@@ -127,7 +127,7 @@ public class VistaMonstruo {
     /**
      * Crea un monstruo pidiendo los datos al usuario y lo devuelve
      * 
-     * @return
+     * @return monstruo creado
      */
     public Monstruo crearMonstruoV2() {
         // Pide el nombre

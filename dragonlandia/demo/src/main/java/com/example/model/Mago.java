@@ -45,6 +45,8 @@ public class Mago {
 
     /**
      * Obtiene el ID del mago.
+     * 
+     * @return id del mago
      */
     public int getId() {
         return id;
@@ -53,7 +55,7 @@ public class Mago {
     /**
      * Establece el ID del mago.
      * 
-     * @param id
+     * @param id id del mago
      */
     public void setId(int id) {
         this.id = id;
@@ -62,7 +64,7 @@ public class Mago {
     /**
      * Obtiene el nombre del mago.
      * 
-     * @return
+     * @return nombre del mago
      */
     public String getNombre() {
         return nombre;
@@ -71,7 +73,7 @@ public class Mago {
     /**
      * Establece el nombre del mago.
      * 
-     * @param nombre
+     * @param nombre nombre del mago
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -80,7 +82,7 @@ public class Mago {
     /**
      * Obtiene la vida del mago.
      * 
-     * @return
+     * @return vida del mago
      */
     public int getVida() {
         return vida;
@@ -89,7 +91,7 @@ public class Mago {
     /**
      * Establece la vida del mago.
      * 
-     * @param vida
+     * @param vida vida del mago
      */
     public void setVida(int vida) {
         if (vida < 0) {
@@ -101,7 +103,7 @@ public class Mago {
     /**
      * Obtiene el nivel de magia del mago.
      * 
-     * @return
+     * @return nivel de magia del mago
      */
     public int getNivelMagia() {
         return nivelMagia;
@@ -110,7 +112,7 @@ public class Mago {
     /**
      * Establece el nivel de magia del mago.
      * 
-     * @param nivelMagia
+     * @param nivelMagia nivel de magia del mago
      */
     public void setNivelMagia(int nivelMagia) {
         if (nivelMagia < 0) {
@@ -122,7 +124,7 @@ public class Mago {
     /**
      * Obtiene los hechizos del mago.
      * 
-     * @return
+     * @return hechizos del mago
      */
     public List<Hechizo> getConjuros() {
         return conjuros;
@@ -131,7 +133,7 @@ public class Mago {
     /**
      * Establece los hechizos del mago.
      * 
-     * @param hechizos
+     * @param hechizos hechizos del mago
      */
     public void setConjuros(List<Hechizo> hechizos) {
         this.conjuros = hechizos;
@@ -146,9 +148,9 @@ public class Mago {
     /**
      * Constructor con parametros para añadir el objeto a la bd o hacer pruebas
      * 
-     * @param nombre
-     * @param vida
-     * @param nivelMagia
+     * @param nombre nombre del mago
+     * @param vida vida del mago
+     * @param nivelMagia nivel de magia del mago
      */
     public Mago(String nombre, int vida, int nivelMagia, List<Hechizo> conjuros) {
         this.nombre = nombre;
@@ -160,7 +162,7 @@ public class Mago {
     /**
      * Lanza un hechizo a un monstruo.
      * 
-     * @param monstruo
+     * @param monstruo monstruo al que se le lanza el hechizo
      */
     public void lanzarHechizo(Monstruo monstruo) {
         monstruo.setVida(monstruo.getVida() - this.nivelMagia);
@@ -169,8 +171,8 @@ public class Mago {
     /**
      * Lanza un hechizo a un monstruo especificando el hechizo.
      * 
-     * @param monstruo
-     * @param hechizo
+     * @param monstruo monstruo al que se le lanza el hechizo
+     * @param hechizo hechizo que se lanza
      */
     public void lanzarHechizo(Monstruo monstruo, Hechizo hechizo) {
         if (this.conjuros != null && this.conjuros.contains(hechizo)) {
@@ -184,6 +186,8 @@ public class Mago {
 
     /**
      * Mostramos los datos del mago
+     * 
+     * @return cadena con los datos del mago
      */
     @Override
     public String toString() {

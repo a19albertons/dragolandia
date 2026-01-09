@@ -52,7 +52,7 @@ public class Bosque {
     /**
      * Obtiene el ID del bosque.
      * 
-     * @return
+     * @return id del bosque
      */
     public int getId() {
         return id;
@@ -61,7 +61,7 @@ public class Bosque {
     /**
      * Establece el ID del bosque.
      * 
-     * @param id
+     * @param id id a establecer
      */
     public void setId(int id) {
         this.id = id;
@@ -70,7 +70,7 @@ public class Bosque {
     /**
      * Obtiene el nombre del bosque.
      * 
-     * @return
+     * @return nombre del bosque
      */
     public String getNombre() {
         return nombre;
@@ -79,7 +79,7 @@ public class Bosque {
     /**
      * Establece el nombre del bosque.
      * 
-     * @param nombre
+     * @param nombre nombre a establecer
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -88,7 +88,7 @@ public class Bosque {
     /**
      * Obtiene el nivel de peligro del bosque.
      * 
-     * @return
+     * @return nivel de peligro del bosque
      */
     public int getNivelPeligro() {
         return nivelPeligro;
@@ -97,7 +97,7 @@ public class Bosque {
     /**
      * Establece el nivel de peligro del bosque.
      * 
-     * @param nivelPeligro
+     * @param nivelPeligro nivel de peligro a establecer
      */
     public void setNivelPeligro(int nivelPeligro) {
         this.nivelPeligro = nivelPeligro;
@@ -106,7 +106,7 @@ public class Bosque {
     /**
      * Obtiene el monstruo jefe del bosque.
      * 
-     * @return
+     * @return monstruo jefe del bosque
      */
     public Monstruo getMonstruoJefe() {
         return monstruoJefe;
@@ -115,7 +115,7 @@ public class Bosque {
     /**
      * Establece el monstruo jefe del bosque.
      * 
-     * @param monstruoJefe
+     * @param monstruoJefe monstruo jefe a establecer
      */
     public void setMonstruoJefe(Monstruo monstruoJefe) {
         this.monstruoJefe = monstruoJefe;
@@ -124,7 +124,7 @@ public class Bosque {
     /**
      * Obtiene la lista de monstruos del bosque.
      * 
-     * @return
+     * @return lista de monstruos del bosque
      */
     public List<Monstruo> getListaMonstruos() {
         return listaMonstruos;
@@ -133,7 +133,7 @@ public class Bosque {
     /**
      * Establece la lista de monstruos del bosque.
      * 
-     * @param listaMonstruos
+     * @param listaMonstruos lista de monstruos a establecer
      */
     public void setListaMonstruos(List<Monstruo> listaMonstruos) {
         this.listaMonstruos = listaMonstruos;
@@ -142,7 +142,7 @@ public class Bosque {
     /**
      * Obtiene el dragon del bosque.
      * 
-     * @return
+     * @return dragon del bosque
      */
     public Dragon getDragon() {
         return dragon;
@@ -151,7 +151,7 @@ public class Bosque {
     /**
      * Establece el dragon del bosque.
      * 
-     * @param dragon
+     * @param dragon dragon a establecer
      */
     public void setDragon(Dragon dragon) {
         this.dragon = dragon;
@@ -166,11 +166,11 @@ public class Bosque {
     /**
      * Constructor con parametros para construir el objeto
      * 
-     * @param nombre
-     * @param nivelPeligro
-     * @param monstruoJefe
-     * @param listaMonstruos
-     * @param dragon
+     * @param nombre nombre del bosque
+     * @param nivelPeligro nivel de peligro del bosque
+     * @param monstruoJefe monstruo jefe del bosque
+     * @param listaMonstruos lista de monstruos del bosque
+     * @param dragon dragon del bosque
      */
     public Bosque(String nombre, int nivelPeligro, Monstruo monstruoJefe, List<Monstruo> listaMonstruos,
             Dragon dragon) {
@@ -190,6 +190,8 @@ public class Bosque {
 
     /**
      * Metodo que cambia el jefe del bosque
+     * 
+     * @param nuevoJefe nuevo jefe del bosque
      */
     public void cambiarJefe(Monstruo nuevoJefe) {
         this.monstruoJefe = nuevoJefe;
@@ -198,7 +200,7 @@ public class Bosque {
     /**
      * Añade un monstruo a la lista de monstruos del bosque.
      * 
-     * @param monstruo
+     * @param monstruo monstruo a añadir
      */
     public void addMonstruo(Monstruo monstruo) {
         this.listaMonstruos.add(monstruo);
@@ -206,6 +208,8 @@ public class Bosque {
 
     /**
      * Mostramos los datos del bosque
+     * 
+     * @return cadena con los datos del bosque
      */
     @Override
     public String toString() {

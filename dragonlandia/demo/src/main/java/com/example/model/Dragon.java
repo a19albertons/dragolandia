@@ -34,7 +34,7 @@ public class Dragon {
     /**
      * Obtiene el id del dragon.
      * 
-     * @return
+     * @return id del dragon
      */
     public int getId() {
         return id;
@@ -43,7 +43,7 @@ public class Dragon {
     /**
      * Establece el id del dragon.
      * 
-     * @param id
+     * @param id id del dragon
      */
     public void setId(int id) {
         this.id = id;
@@ -52,7 +52,7 @@ public class Dragon {
     /**
      * Obtiene el nombre del dragon.
      * 
-     * @return
+     * @return nombre del dragon
      */
     public String getNombre() {
         return nombre;
@@ -61,7 +61,7 @@ public class Dragon {
     /**
      * Establece el nombre del dragon.
      * 
-     * @param nombre
+     * @param nombre nombre del dragon
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -70,7 +70,7 @@ public class Dragon {
     /**
      * Obtiene el nivel de fuego del dragon.
      * 
-     * @return
+     * @return nivel de fuego del dragon
      */
     public int getIntensidadFuego() {
         return intensidadFuego;
@@ -79,7 +79,7 @@ public class Dragon {
     /**
      * Establece el nivel de fuego del dragon.
      * 
-     * @param nivelFuego
+     * @param nivelFuego nivel de fuego del dragon
      */
     public void setIntensidadFuego(int nivelFuego) {
         this.intensidadFuego = nivelFuego;
@@ -88,7 +88,7 @@ public class Dragon {
     /**
      * Obtiene la resistencia del dragon.
      * 
-     * @return
+     * @return resistencia del dragon
      */
     public int getResistencia() {
         return resistencia;
@@ -97,7 +97,7 @@ public class Dragon {
     /**
      * Establece la resistencia del dragon.
      * 
-     * @param resistencia
+     * @param resistencia resistencia del dragon
      */
     public void setResistencia(int resistencia) {
         this.resistencia = resistencia;
@@ -112,9 +112,9 @@ public class Dragon {
     /**
      * Constructor parametrizado
      * 
-     * @param nombre
-     * @param nivelFuego
-     * @param resistencia
+     * @param nombre nombre del dragon
+     * @param nivelFuego nivel de fuego del dragon
+     * @param resistencia resistencia del dragon
      */
     public Dragon(String nombre, int nivelFuego, int resistencia) {
         this.nombre = nombre;
@@ -125,12 +125,17 @@ public class Dragon {
     /**
      * Ataque del dragon
      * 
-     * @param monstruo
+     * @param monstruo monstruo a atacar
      */
     public void exhalar(Monstruo monstruo) {
         monstruo.setVida(monstruo.getVida() - this.intensidadFuego);
     }
 
+    /**
+     * Mostramos los datos del dragon
+     * 
+     * @return cadena con los datos del dragon
+     */
     @Override
     public String toString() {
         return "Dragon [id=" + id + ", nombre=" + nombre + ", intensidadFuego=" + intensidadFuego + ", resistencia="

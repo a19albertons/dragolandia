@@ -17,7 +17,7 @@ public class ControladorDragon {
     /**
      * Obtiene el dragon.
      * 
-     * @return
+     * @return dragon obtenido
      */
     public Dragon getDragon() {
         return dragon;
@@ -26,7 +26,7 @@ public class ControladorDragon {
     /**
      * Establece el dragon.
      * 
-     * @param dragon
+     * @param dragon dragon a establecer
      */
     public void setDragon(Dragon dragon) {
         this.dragon = dragon;
@@ -59,7 +59,7 @@ public class ControladorDragon {
     /**
      * Obtiene todos los dragones utilizando el DragonDAO.
      * 
-     * @return
+     * @return lista de todos los dragones
      */
     public List<Dragon> obtenerTodosDragones() {
         DragonDAO dragonDAO = new DragonDAO();
@@ -69,11 +69,11 @@ public class ControladorDragon {
     /**
      * Guarda el dragon pasado como parámetro.
      * 
-     * @param dragon2
+     * @param dragon dragon a guardar
      */
-    public void guardarDragon(Dragon dragon2) {
+    public void guardarDragon(Dragon dragon) {
         DragonDAO dragonDAO = new DragonDAO();
-        dragonDAO.guardarDragon(dragon2);
+        dragonDAO.guardarDragon(dragon);
     }
 
 }

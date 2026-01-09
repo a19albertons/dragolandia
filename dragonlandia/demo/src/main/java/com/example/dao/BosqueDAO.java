@@ -19,6 +19,8 @@ public class BosqueDAO {
 
     /**
      * Guarda el bosque en la base de datos.
+     * 
+     * @param bosque bosque a guardar
      */
     public void guardarBosque(Bosque bosque) {
         EntityManager em = hibernateSingleton.getEntityManager();
@@ -44,6 +46,8 @@ public class BosqueDAO {
 
     /**
      * Borrar el bosque en la base de datos.
+     * 
+     * @param bosque bosque a borrar
      */
     public void borrarBosque(Bosque bosque) {
         EntityManager em = hibernateSingleton.getEntityManager();
@@ -69,6 +73,8 @@ public class BosqueDAO {
 
     /**
      * Actualiza el bosque en la base de datos.
+     * 
+     * @param bosque bosque a actualizar
      */
     public void actualizarBosque(Bosque bosque) {
         EntityManager em = hibernateSingleton.getEntityManager();
@@ -94,6 +100,8 @@ public class BosqueDAO {
 
     /**
      * Obtiene los bosques de la base de datos
+     * 
+     * @return lista de bosques obtenidos
      */
     public List<Bosque> obtenerTodosBosques() {
         List<Bosque> listaBosques = new ArrayList<>();
@@ -121,6 +129,9 @@ public class BosqueDAO {
 
     /**
      * Obtiene un bosque por id
+     * 
+     * @param id id del bosque
+     * @return bosque obtenido
      */
     public Bosque obtenerBosque(int id) {
         Bosque bosque = null;
@@ -151,14 +162,15 @@ public class BosqueDAO {
     /**
      * Obtiene los monstruos que no estan asignados a ningun bosque.
      * 
-     * @return
+     * @return lista de monstruos sin bosque
      */
     public List<Monstruo> obtenerMonstruosSinBosque() {
         List<Monstruo> listaMonstruos = new ArrayList<>();
         EntityManager em = hibernateSingleton.getEntityManager();
         try {
             listaMonstruos = em
-                    .createQuery("select m from Monstruo m where m not in (select mo from Bosque b join b.listaMonstruos mo)",
+                    .createQuery(
+                            "select m from Monstruo m where m not in (select mo from Bosque b join b.listaMonstruos mo)",
                             Monstruo.class)
                     .getResultList();
         } catch (Exception e) {
@@ -177,14 +189,15 @@ public class BosqueDAO {
     /**
      * Obtiene los dragones que no estan asignados a ningun bosque.
      * 
-     * @return
+     * @return lista de dragones sin bosque
      */
     public List<Dragon> obtenerDragonesSinBosque() {
         List<Dragon> listaDragones = new ArrayList<>();
         EntityManager em = hibernateSingleton.getEntityManager();
         try {
             listaDragones = em
-                    .createQuery("select d from Dragon d where d not in (select dr from Bosque b join b.dragon dr )", Dragon.class)
+                    .createQuery("select d from Dragon d where d not in (select dr from Bosque b join b.dragon dr )",
+                            Dragon.class)
                     .getResultList();
         } catch (Exception e) {
             System.out.println("Error al obtener dragones sin bosque");

@@ -89,8 +89,8 @@ public class ControladorBosque {
      * Genera una lista de monstruos a partir de una cadena de indices separados por
      * comas.
      * 
-     * @param seleccion
-     * @return
+     * @param seleccion cadena de indices separados por comas
+     * @return lista de monstruos seleccionados
      */
     public List<Monstruo> generarLista(String seleccion) {
         List<Monstruo> listaMonstruos = this.obtenerMonstruosSinBosque();
@@ -113,7 +113,7 @@ public class ControladorBosque {
     /**
      * Obtiene los dragones que no estan asignados a ningun bosque.
      * 
-     * @return
+     * @return lista de dragones sin bosque
      */
     public List<Dragon> obtenerDragonesSinBosque() {
         BosqueDAO bosqueDAO = new BosqueDAO();
@@ -123,8 +123,8 @@ public class ControladorBosque {
     /**
      * Añade un monstruo a un bosque existente.
      * 
-     * @param bosqueSeleccionado
-     * @param monstruoSeleccionado
+     * @param bosqueSeleccionado bosque al que se añadirá el monstruo
+     * @param monstruoSeleccionado monstruo que se añadirá al bosque
      */
     public void anadirMonstruoABosque(Bosque bosqueSeleccionado, Monstruo monstruoSeleccionado) {
         bosqueSeleccionado.addMonstruo(monstruoSeleccionado);
@@ -140,8 +140,8 @@ public class ControladorBosque {
     /**
      * Cambia el monstruo jefe de un bosque.
      * 
-     * @param bosqueSeleccionado
-     * @param nuevoMonstruoJefe
+     * @param bosqueSeleccionado bosque cuyo monstruo jefe será cambiado
+     * @param nuevoMonstruoJefe nuevo monstruo jefe del bosque
      */
     public void cambiarMonstruoJefe(Bosque bosqueSeleccionado, Monstruo nuevoMonstruoJefe) {
         bosqueSeleccionado.cambiarJefe(nuevoMonstruoJefe);
@@ -150,10 +150,10 @@ public class ControladorBosque {
     /**
      * Guarda el bosque pasado como parámetro.
      * 
-     * @param bosque2
+     * @param bosque bosque a guardar
      */
-    public void guardarBosque(Bosque bosque2) {
+    public void guardarBosque(Bosque bosque) {
         BosqueDAO bosqueDAO = new BosqueDAO();
-        bosqueDAO.guardarBosque(bosque2);
+        bosqueDAO.guardarBosque(bosque);
     }
 }

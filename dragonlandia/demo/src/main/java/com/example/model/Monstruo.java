@@ -40,7 +40,7 @@ public class Monstruo {
     /**
      * Obtiene el ID del monstruo.
      * 
-     * @return
+     * @return id del monstruo
      */
     public int getId() {
         return id;
@@ -49,7 +49,7 @@ public class Monstruo {
     /**
      * Establece el ID del monstruo.
      * 
-     * @param id
+     * @param id id del monstruo
      */
     public void setId(int id) {
         this.id = id;
@@ -58,7 +58,7 @@ public class Monstruo {
     /**
      * Obtiene el nombre del monstruo.
      * 
-     * @return
+     * @return nombre del monstruo
      */
     public String getNombre() {
         return nombre;
@@ -67,7 +67,7 @@ public class Monstruo {
     /**
      * Establece el nombre del monstruo.
      * 
-     * @param nombre
+     * @param nombre nombre del monstruo
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -76,7 +76,7 @@ public class Monstruo {
     /**
      * Obtiene la vida del monstruo.
      * 
-     * @return
+     * @return vida del monstruo
      */
     public int getVida() {
         return vida;
@@ -85,7 +85,7 @@ public class Monstruo {
     /**
      * Establece la vida del monstruo.
      * 
-     * @param vida
+     * @param vida vida del monstruo
      */
     public void setVida(int vida) {
         if (vida < 0) {
@@ -97,7 +97,7 @@ public class Monstruo {
     /**
      * Obtiene el tipo del monstruo.
      * 
-     * @return
+     * @return tipo del monstruo
      */
     public TipoMonstruo getTipo() {
         return tipo;
@@ -106,7 +106,7 @@ public class Monstruo {
     /**
      * Establece el tipo del monstruo.
      * 
-     * @param tipo
+     * @param tipo tipo del monstruo
      */
     public void setTipo(TipoMonstruo tipo) {
         this.tipo = tipo;
@@ -115,7 +115,7 @@ public class Monstruo {
     /**
      * Obtiene la fuerza del monstruo.
      * 
-     * @return
+     * @return fuerza del monstruo
      */
     public int getFuerza() {
         return fuerza;
@@ -124,7 +124,7 @@ public class Monstruo {
     /**
      * Establece la fuerza del monstruo.
      * 
-     * @param fuerza
+     * @param fuerza fuerza del monstruo
      */
     public void setFuerza(int fuerza) {
         if (fuerza < 0) {
@@ -142,10 +142,10 @@ public class Monstruo {
     /**
      * Constructor con parametros para añadir el objeto a la bd o hacer pruebas
      * 
-     * @param nombre
-     * @param vida
+     * @param nombre nombre del monstruo
+     * @param vida vida del monstruo
      * @param tipo tener en cuenta el enum TipoMonstruo
-     * @param fuerza
+     * @param fuerza fuerza del monstruo
      */
     public Monstruo(String nombre, int vida, TipoMonstruo tipo, int fuerza) {
         this.nombre = nombre;
@@ -157,7 +157,7 @@ public class Monstruo {
     /**
      * Metodo para que el monstruo ataque a un mago
      * 
-     * @param mago
+     * @param mago mago al que ataca el monstruo
      */
     public void atacar(Mago mago) {
         mago.setVida(mago.getVida() - this.fuerza);
@@ -165,6 +165,8 @@ public class Monstruo {
 
     /**
      * Devuelve una string con los datos del monstruo
+     * 
+     * @return cadena con los datos del monstruo
      */
     @Override
     public String toString() {

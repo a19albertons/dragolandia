@@ -17,6 +17,8 @@ public class MagoDAO {
 
     /**
      * Guarda el mago en la base de datos.
+     * 
+     * @param mago mago a guardar
      */
     public void guardarMago(Mago mago) {
         EntityManager em = hibernateSingleton.getEntityManager();
@@ -42,6 +44,8 @@ public class MagoDAO {
 
     /**
      * Borrar el mago en la base de datos.
+     * 
+     * @param mago mago a borrar
      */
     public void borrarMago(Mago mago) {
         EntityManager em = hibernateSingleton.getEntityManager();
@@ -67,6 +71,8 @@ public class MagoDAO {
 
     /**
      * Actualiza el mago en la base de datos.
+     * 
+     * @param mago mago a actualizar
      */
     public void actualizarMago(Mago mago) {
         EntityManager em = hibernateSingleton.getEntityManager();
@@ -92,6 +98,8 @@ public class MagoDAO {
 
     /**
      * Obtiene los magos de la base de datos
+     * 
+     * @return lista de magos obtenida
      */
     public List<Mago> obtenerTodosMagos() {
         List<Mago> listaMagos = new ArrayList<>();
@@ -119,6 +127,9 @@ public class MagoDAO {
 
     /**
      * Obtiene los magos de la base de datos
+     * 
+     * @param id id del mago
+     * @return mago obtenido
      */
     public Mago obtenerMago(int id) {
         Mago mago = null;

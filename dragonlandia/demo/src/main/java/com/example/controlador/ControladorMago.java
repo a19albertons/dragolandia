@@ -31,7 +31,7 @@ public class ControladorMago {
     /**
      * Establece el mago.
      * 
-     * @param mago
+     * @param mago mago a establecer
      */
     public void setMago(Mago mago) {
         this.mago = mago;
@@ -40,7 +40,7 @@ public class ControladorMago {
     /**
      * Verifica si el mago tiene vida.
      * 
-     * @return
+     * @return true si el mago tiene vida, false en caso contrario
      */
     public boolean magoTieneVida() {
         return this.mago.getVida() > 0;
@@ -49,8 +49,8 @@ public class ControladorMago {
     /**
      * Crea un hechizo basado en el nombre proporcionado.
      * 
-     * @param nombreHechizo
-     * @return
+     * @param nombreHechizo nombre del hechizo a crear
+     * @return el hechizo creado
      */
     public Hechizo crearHechizoPorNombre(String nombreHechizo) {
         switch (nombreHechizo.toLowerCase()) {
@@ -95,7 +95,7 @@ public class ControladorMago {
     /**
      * Obtiene todos los magos utilizando el MagoDAO.
      * 
-     * @return
+     * @return lista de todos los magos
      */
     public List<Mago> obtenerTodosMagos() {
         MagoDAO magoDAO = new MagoDAO();
@@ -105,7 +105,7 @@ public class ControladorMago {
     /**
      * Guarda una lista de magos en la base de datos.
      * 
-     * @param listaMagos
+     * @param listaMagos lista de magos a guardar
      */
     public void guardarListaMagos(List<Mago> listaMagos) {
         MagoDAO magoDAO = new MagoDAO();

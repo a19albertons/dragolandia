@@ -30,7 +30,7 @@ public class Controlador {
      * Vista que interactúa con el usuario
      */
     private Vista vista;
-    
+
     /**
      * Constructor por defecto que inicializa los subcontroladores del mago,
      * monstruo y bosque.
@@ -47,7 +47,7 @@ public class Controlador {
     /**
      * Obtiene el controlador del mago.
      * 
-     * @return
+     * @return devuelve el controlador del mago
      */
     public ControladorMago getControladorMago() {
         return controladorMago;
@@ -56,7 +56,7 @@ public class Controlador {
     /**
      * Establece el controlador del mago.
      * 
-     * @param controladorMago
+     * @param controladorMago establece el controlador del mago
      */
     public void setControladorMago(ControladorMago controladorMago) {
         this.controladorMago = controladorMago;
@@ -65,7 +65,7 @@ public class Controlador {
     /**
      * Obtiene el controlador del monstruo.
      * 
-     * @return
+     * @return devuelve el controlador del monstruo
      */
     public ControladorMonstruo getControladorMonstruo() {
         return controladorMonstruo;
@@ -74,7 +74,7 @@ public class Controlador {
     /**
      * Establece el controlador del monstruo.
      * 
-     * @param controladorMonstruo
+     * @param controladorMonstruo establece el controlador del monstruo
      */
     public void setControladorMonstruo(ControladorMonstruo controladorMonstruo) {
         this.controladorMonstruo = controladorMonstruo;
@@ -83,7 +83,7 @@ public class Controlador {
     /**
      * Obtiene el controlador del bosque.
      * 
-     * @return
+     * @return devuelve el controlador del bosque
      */
     public ControladorBosque getControladorBosque() {
         return controladorBosque;
@@ -92,7 +92,7 @@ public class Controlador {
     /**
      * Establece el controlador del bosque.
      * 
-     * @param controladorBosque
+     * @param controladorBosque establece el controlador del bosque
      */
     public void setControladorBosque(ControladorBosque controladorBosque) {
         this.controladorBosque = controladorBosque;
@@ -100,7 +100,8 @@ public class Controlador {
 
     /**
      * Obtiene el controlador del dragón.
-     * @return
+     * 
+     * @return devuelve el controlador del dragón
      */
     public ControladorDragon getControladorDragon() {
         return controladorDragon;
@@ -108,7 +109,8 @@ public class Controlador {
 
     /**
      * Establece el controlador del dragón.
-     * @param controladorDragon
+     * 
+     * @param controladorDragon establece el controlador del dragón
      */
     public void setControladorDragon(ControladorDragon controladorDragon) {
         this.controladorDragon = controladorDragon;
@@ -117,7 +119,7 @@ public class Controlador {
     /**
      * Obtiene el controlador de la batalla.
      * 
-     * @return
+     * @return devuelve el controlador de la batalla
      */
     public ControladorBatalla getControladorBatalla() {
         return controladorBatalla;
@@ -126,7 +128,7 @@ public class Controlador {
     /**
      * Establece el controlador de la batalla.
      * 
-     * @param controladorBatalla
+     * @param controladorBatalla establece el controlador de la batalla
      */
     public void setControladorBatalla(ControladorBatalla controladorBatalla) {
         this.controladorBatalla = controladorBatalla;
