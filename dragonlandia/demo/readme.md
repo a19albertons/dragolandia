@@ -131,6 +131,6 @@ erDiagram
 ## Amplicacion
 
 - El dragon pueda ser atacado por los monstruos que habitan en el bosque.
-- Que el uso de hechizos cueste puntos de magia al mago.
+- Que el uso de hechizos cueste puntos de magia al mago (nuevo atributo).
 - Que los tipos de monstruos tengan resistencias o debilidades frente a ciertos tipos de hechizos.
 - Que el monstruo jefe tenga habilidades especiales.
