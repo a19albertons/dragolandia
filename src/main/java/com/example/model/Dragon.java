@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 /**
@@ -30,6 +31,13 @@ public class Dragon {
      * Resistencia del dragon
      */
     private int resistencia;
+
+    
+    /**
+     * Bosque donde habita el dragon
+     */
+    @OneToOne
+    private Bosque bosqueHabita;
 
     /**
      * Obtiene el id del dragon.
@@ -104,6 +112,24 @@ public class Dragon {
     }
 
     /**
+     * Obtiene el bosque donde habita el dragon.
+     * 
+     * @return bosque donde habita el dragon
+     */
+    public Bosque getBosqueHabita() {
+        return bosqueHabita;
+    }
+
+    /**
+     * Establece el bosque donde habita el dragon.
+     * 
+     * @param bosqueHabita bosque donde habita el dragon
+     */
+    public void setBosqueHabita(Bosque bosqueHabita) {
+        this.bosqueHabita = bosqueHabita;
+    }
+
+    /**
      * Constructor por defecto para hibernate
      */
     public Dragon() {
@@ -115,11 +141,13 @@ public class Dragon {
      * @param nombre      nombre del dragon
      * @param nivelFuego  nivel de fuego del dragon
      * @param resistencia resistencia del dragon
+     * @param bosqueHabita bosque donde habita el dragon
      */
-    public Dragon(String nombre, int nivelFuego, int resistencia) {
+    public Dragon(String nombre, int nivelFuego, int resistencia, Bosque bosqueHabita) {
         this.nombre = nombre;
         this.intensidadFuego = nivelFuego;
         this.resistencia = resistencia;
+        this.bosqueHabita = bosqueHabita;
     }
 
     /**
@@ -143,7 +171,7 @@ public class Dragon {
     @Override
     public String toString() {
         return "Dragon [id=" + id + ", nombre=" + nombre + ", intensidadFuego=" + intensidadFuego + ", resistencia="
-                + resistencia + "]";
+                + resistencia + ", bosqueHabita=" + bosqueHabita + "]";
     }
 
 }

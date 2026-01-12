@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import com.example.controlador.Controlador;
 import com.example.model.Bosque;
-import com.example.model.Dragon;
 import com.example.model.Monstruo;
 
 /**
@@ -36,77 +35,78 @@ public class VistaBosque {
 
     /**
      * Crea un bosque pidiendo algunos datos al usuario y lo guarda
+     * Actualmente este metodo esta deshabilitado.
      */
     public void crearBosque() {
-        // Crear un bosque
-        System.out.println("Menu que gestiona la creacion de un bosque");
+        // // Crear un bosque
+        // System.out.println("Menu que gestiona la creacion de un bosque");
 
-        // Pide el nombre
-        System.out.print("Ingrese el nombre del bosque: ");
-        String nombreBosque = scanner.nextLine();
+        // // Pide el nombre
+        // System.out.print("Ingrese el nombre del bosque: ");
+        // String nombreBosque = scanner.nextLine();
 
-        // Pide el nivel de peligro
-        System.out.print("Ingrese el nivel de peligro del bosque: ");
-        int nivelPeligroBosque;
-        try {
-            nivelPeligroBosque = Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 5");
-            nivelPeligroBosque = 5;
-            System.out.println(e.getMessage());
-        }
+        // // Pide el nivel de peligro
+        // System.out.print("Ingrese el nivel de peligro del bosque: ");
+        // int nivelPeligroBosque;
+        // try {
+        //     nivelPeligroBosque = Integer.parseInt(scanner.nextLine());
+        // } catch (NumberFormatException e) {
+        //     System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 5");
+        //     nivelPeligroBosque = 5;
+        //     System.out.println(e.getMessage());
+        // }
 
-        // Indica los monstruos disponibles para ser jefe del bosque
-        List<Monstruo> listaMonstruos = controlador.getControladorBosque().obtenerMonstruosSinBosque();
-        System.out.println("Seleccione el listado de monstruos:");
-        for (int i = 0; i < listaMonstruos.size(); i++) {
-            System.out.println(i + ": " + listaMonstruos.get(i).toString());
-        }
+        // // Indica los monstruos disponibles para ser jefe del bosque
+        // List<Monstruo> listaMonstruos = controlador.getControladorBosque().obtenerMonstruosSinBosque();
+        // System.out.println("Seleccione el listado de monstruos:");
+        // for (int i = 0; i < listaMonstruos.size(); i++) {
+        //     System.out.println(i + ": " + listaMonstruos.get(i).toString());
+        // }
 
-        int indiceMonstruo;
-        Monstruo monstruoJefe;
-        try {
-            System.out.print("Ingrese el índice del monstruo jefe del bosque: ");
-            indiceMonstruo = Integer.parseInt(scanner.nextLine());
-            monstruoJefe = listaMonstruos.get(indiceMonstruo);
-        } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            System.out.println(
-                    "Error: Formato numérico incorrecto o índice fuera de rango. Se selecciona el primer monstruo por defecto.");
-            indiceMonstruo = 0;
-            monstruoJefe = listaMonstruos.get(indiceMonstruo);
-            System.out.println(e.getMessage());
-        }
+        // int indiceMonstruo;
+        // Monstruo monstruoJefe;
+        // try {
+        //     System.out.print("Ingrese el índice del monstruo jefe del bosque: ");
+        //     indiceMonstruo = Integer.parseInt(scanner.nextLine());
+        //     monstruoJefe = listaMonstruos.get(indiceMonstruo);
+        // } catch (NumberFormatException | IndexOutOfBoundsException e) {
+        //     System.out.println(
+        //             "Error: Formato numérico incorrecto o índice fuera de rango. Se selecciona el primer monstruo por defecto.");
+        //     indiceMonstruo = 0;
+        //     monstruoJefe = listaMonstruos.get(indiceMonstruo);
+        //     System.out.println(e.getMessage());
+        // }
 
-        // Añadir dragon
-        List<Dragon> listaDragones = controlador.getControladorBosque().obtenerDragonesSinBosque();
-        System.out.println("Seleccione el listado de dragones:");
-        for (int i = 0; i < listaDragones.size(); i++) {
-            System.out.println(i + ": " + listaDragones.get(i).toString());
-        }
-        int indiceDragon;
-        Dragon dragonAsignado;
-        try {
-            System.out.print("Ingrese el índice del dragon asignado al bosque: ");
-            indiceDragon = Integer.parseInt(scanner.nextLine());
-            dragonAsignado = listaDragones.get(indiceDragon);
-        } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            System.out.println(
-                    "Error: Formato numérico incorrecto o índice fuera de rango. Se selecciona el primer dragon por defecto.");
-            indiceDragon = 0;
-            dragonAsignado = listaDragones.get(indiceDragon);
-            System.out.println(e.getMessage());
-        }
+        // // Añadir dragon
+        // List<Dragon> listaDragones = controlador.getControladorBosque().obtenerDragonesSinBosque();
+        // System.out.println("Seleccione el listado de dragones:");
+        // for (int i = 0; i < listaDragones.size(); i++) {
+        //     System.out.println(i + ": " + listaDragones.get(i).toString());
+        // }
+        // int indiceDragon;
+        // Dragon dragonAsignado;
+        // try {
+        //     System.out.print("Ingrese el índice del dragon asignado al bosque: ");
+        //     indiceDragon = Integer.parseInt(scanner.nextLine());
+        //     dragonAsignado = listaDragones.get(indiceDragon);
+        // } catch (NumberFormatException | IndexOutOfBoundsException e) {
+        //     System.out.println(
+        //             "Error: Formato numérico incorrecto o índice fuera de rango. Se selecciona el primer dragon por defecto.");
+        //     indiceDragon = 0;
+        //     dragonAsignado = listaDragones.get(indiceDragon);
+        //     System.out.println(e.getMessage());
+        // }
 
-        // Crear y guardar bosque
-        Bosque bosque = new Bosque(nombreBosque, nivelPeligroBosque, monstruoJefe, listaMonstruos, dragonAsignado);
-        controlador.getControladorBosque().setBosque(bosque);
-        controlador.getControladorBosque().guardarBosque();
-        System.out.println("Bosque creado exitosamente:");
+        // // Crear y guardar bosque
+        // Bosque bosque = new Bosque(nombreBosque, nivelPeligroBosque, monstruoJefe, listaMonstruos, dragonAsignado);
+        // controlador.getControladorBosque().setBosque(bosque);
+        // controlador.getControladorBosque().guardarBosque();
+        // System.out.println("Bosque creado exitosamente:");
 
-        // Mostrar los datos del monstruo jefe del bosque
-        System.out.println(
-                "El bosque tiene los siguiente datos:" +
-                        controlador.getControladorBosque().getBosque().toString());
+        // // Mostrar los datos del monstruo jefe del bosque
+        // System.out.println(
+        //         "El bosque tiene los siguiente datos:" +
+        //                 controlador.getControladorBosque().getBosque().toString());
 
     }
 
@@ -273,7 +273,7 @@ public class VistaBosque {
      * @param listaMonstruos lista de monstruos del bosque
      * @return bosque creado
      */
-    public Bosque crearBosqueV2(Dragon dragon, List<Monstruo> listaMonstruos) {
+    public Bosque crearBosqueV2(List<Monstruo> listaMonstruos) {
         // Pide el nombre
         System.out.print("Ingrese el nombre del bosque: ");
         String nombreBosque = scanner.nextLine();
@@ -310,7 +310,7 @@ public class VistaBosque {
         }
 
         // Crear y guardar bosque
-        Bosque bosque = new Bosque(nombreBosque, nivelPeligroBosque, monstruoJefe, listaMonstruos, dragon);
+        Bosque bosque = new Bosque(nombreBosque, nivelPeligroBosque, monstruoJefe, listaMonstruos);
         return bosque;
 
     }

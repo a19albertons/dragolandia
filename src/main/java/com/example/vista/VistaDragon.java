@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.example.controlador.Controlador;
+import com.example.model.Bosque;
 import com.example.model.Dragon;
 
 /**
@@ -34,43 +35,44 @@ public class VistaDragon {
 
     /**
      * Crea un dragón pidiendo datos al usuario y lo guarda
+     * Actualmente este metodo esta deshabilitado.
      */
     public void crearDragon() {
-        // Crea un dragon
-        System.out.println("Menu que gestiona la creacion de un dragon");
-        // Pide el nombre
-        System.out.print("Ingresar el nombre del dragon:");
-        String nombreDragon = scanner.nextLine();
+        // // Crea un dragon
+        // System.out.println("Menu que gestiona la creacion de un dragon");
+        // // Pide el nombre
+        // System.out.print("Ingresar el nombre del dragon:");
+        // String nombreDragon = scanner.nextLine();
 
-        // Pide la intensidad de fuego
-        System.out.print("Ingresar la intensidad de fuego del dragon:");
-        int intensidadFuego;
-        try {
-            intensidadFuego = Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 10");
-            intensidadFuego = 10;
-            System.out.println(e.getMessage());
-        }
+        // // Pide la intensidad de fuego
+        // System.out.print("Ingresar la intensidad de fuego del dragon:");
+        // int intensidadFuego;
+        // try {
+        //     intensidadFuego = Integer.parseInt(scanner.nextLine());
+        // } catch (NumberFormatException e) {
+        //     System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 10");
+        //     intensidadFuego = 10;
+        //     System.out.println(e.getMessage());
+        // }
 
-        // Pide la resistencia
-        System.out.print("Ingresar la resistencia del dragon:");
-        int resistencia;
-        try {
-            resistencia = Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 50");
-            resistencia = 50;
-            System.out.println(e.getMessage());
-        }
+        // // Pide la resistencia
+        // System.out.print("Ingresar la resistencia del dragon:");
+        // int resistencia;
+        // try {
+        //     resistencia = Integer.parseInt(scanner.nextLine());
+        // } catch (NumberFormatException e) {
+        //     System.out.println("Error: Formato numérico incorrecto. Se asigna el valor por defecto 50");
+        //     resistencia = 50;
+        //     System.out.println(e.getMessage());
+        // }
 
-        // Crear y guardar dragon
-        Dragon dragon = new Dragon(nombreDragon, intensidadFuego, resistencia);
-        controlador.getControladorDragon().setDragon(dragon);
-        controlador.getControladorDragon().guardarDragon();
-        System.out.println("Dragon creado exitosamente:");
-        System.out.println("El dragon tiene los siguiente datos"
-                + controlador.getControladorDragon().getDragon().toString());
+        // // Crear y guardar dragon
+        // Dragon dragon = new Dragon(nombreDragon, intensidadFuego, resistencia);
+        // controlador.getControladorDragon().setDragon(dragon);
+        // controlador.getControladorDragon().guardarDragon();
+        // System.out.println("Dragon creado exitosamente:");
+        // System.out.println("El dragon tiene los siguiente datos"
+        //         + controlador.getControladorDragon().getDragon().toString());
     }
 
     /**
@@ -113,7 +115,7 @@ public class VistaDragon {
      * 
      * @return dragon creado
      */
-    public Dragon crearDragonV2() {
+    public Dragon crearDragonV2(Bosque bosqueHabita) {
         // Pide el nombre
         System.out.print("Ingresar el nombre del dragon:");
         String nombreDragon = scanner.nextLine();
@@ -141,7 +143,7 @@ public class VistaDragon {
         }
 
         // Crear y guardar dragon
-        Dragon dragon = new Dragon(nombreDragon, intensidadFuego, resistencia);
+        Dragon dragon = new Dragon(nombreDragon, intensidadFuego, resistencia, bosqueHabita);
         return dragon;
 
     }

@@ -44,12 +44,6 @@ public class Bosque {
     private List<Monstruo> listaMonstruos;
 
     /**
-     * Dragon que habita en el bosque
-     */
-    @OneToOne
-    private Dragon dragon;
-
-    /**
      * Obtiene el ID del bosque.
      * 
      * @return id del bosque
@@ -140,24 +134,6 @@ public class Bosque {
     }
 
     /**
-     * Obtiene el dragon del bosque.
-     * 
-     * @return dragon del bosque
-     */
-    public Dragon getDragon() {
-        return dragon;
-    }
-
-    /**
-     * Establece el dragon del bosque.
-     * 
-     * @param dragon dragon a establecer
-     */
-    public void setDragon(Dragon dragon) {
-        this.dragon = dragon;
-    }
-
-    /**
      * constructor vacio para el hibernatte
      */
     public Bosque() {
@@ -170,15 +146,12 @@ public class Bosque {
      * @param nivelPeligro nivel de peligro del bosque
      * @param monstruoJefe monstruo jefe del bosque
      * @param listaMonstruos lista de monstruos del bosque
-     * @param dragon dragon del bosque
      */
-    public Bosque(String nombre, int nivelPeligro, Monstruo monstruoJefe, List<Monstruo> listaMonstruos,
-            Dragon dragon) {
+    public Bosque(String nombre, int nivelPeligro, Monstruo monstruoJefe, List<Monstruo> listaMonstruos) {
         this.nombre = nombre;
         this.nivelPeligro = nivelPeligro;
         this.monstruoJefe = monstruoJefe;
         this.listaMonstruos = listaMonstruos;
-        this.dragon = dragon;
     }
 
     /**
@@ -214,7 +187,7 @@ public class Bosque {
     @Override
     public String toString() {
         return "Bosque [id=" + id + ", nombre=" + nombre + ", nivelPeligro=" + nivelPeligro + ", monstruoJefe="
-                + monstruoJefe + ", listaMonstruos=" + listaMonstruos + ", dragon=" + dragon + "]";
+                + monstruoJefe + ", listaMonstruos=" + listaMonstruos +"]";
     }
 
 }

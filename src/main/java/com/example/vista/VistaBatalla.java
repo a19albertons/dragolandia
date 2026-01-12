@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import com.example.controlador.Controlador;
 import com.example.model.Bosque;
+import com.example.model.Dragon;
 import com.example.model.Mago;
 import com.example.model.Monstruo;
 import com.example.model.Hechizo;
@@ -246,12 +247,13 @@ public class VistaBatalla {
      * @param bosque
      * @param listaMagos
      */
-    public void iniciarBatallaAvanzada(List<Mago> listaMagos, Bosque bosque) {
+    public void iniciarBatallaAvanzada(List<Mago> listaMagos, Bosque bosque, Dragon dragon) {
 
         // Selección de bosque (copiado de la versión automática)
         controlador.getControladorBosque().setBosque(bosque);
         controlador.getControladorMonstruo()
                 .setMonstruo(controlador.getControladorBosque().getBosque().getMonstruoJefe());
+        controlador.getControladorDragon().setDragon(dragon);
 
         // Empieza la batalla avanzada
         Boolean magos = true;
@@ -386,8 +388,8 @@ public class VistaBatalla {
             System.out.println("El dragon ataca al monstruo jefe!");
             controlador.getControladorMonstruo().setMonstruo(
                     controlador.getControladorBosque().getBosque().getMonstruoJefe());
-            controlador.getControladorBosque().getBosque().getDragon()
-                    .exhalar(controlador.getControladorMonstruo().getMonstruo());
+            controlador.getControladorDragon().getDragon().exhalar(controlador.getControladorMonstruo().getMonstruo());
+
             // Comprobamos el monstruo jefe
             if (controlador.getControladorBosque().getBosque().getMonstruoJefe().getVida() <= 0) {
                 // Escoger otro monstruo con vida, si hay

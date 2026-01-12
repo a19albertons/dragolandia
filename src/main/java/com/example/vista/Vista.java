@@ -156,9 +156,10 @@ public class Vista {
                         String continuar = "continuar";
                         List<Mago> listaMagos = new ArrayList<>();
                         while (continuar.equals("continuar")) {
-                            listaMagos.add(vistaMago.crearMagoV2());    
-                            if (listaMagos.size()>=2) {
-                                System.out.println("¿Desea crear otro mago? (escriba 'continuar' para seguir o cualquier otra cosa para terminar)");
+                            listaMagos.add(vistaMago.crearMagoV2());
+                            if (listaMagos.size() >= 2) {
+                                System.out.println(
+                                        "¿Desea crear otro mago? (escriba 'continuar' para seguir o cualquier otra cosa para terminar)");
                                 continuar = scanner.nextLine();
                             }
                         }
@@ -166,29 +167,30 @@ public class Vista {
                         continuar = "continuar";
                         List<Monstruo> listaMonstruos = new ArrayList<>();
                         while (continuar.equals("continuar")) {
-                            listaMonstruos.add(vistaMonstruo.crearMonstruoV2());    
-                            if (listaMonstruos.size()>=3) {
-                                System.out.println("¿Desea crear otro monstruo? (escriba 'continuar' para seguir o cualquier otra cosa para terminar)");
+                            listaMonstruos.add(vistaMonstruo.crearMonstruoV2());
+                            if (listaMonstruos.size() >= 3) {
+                                System.out.println(
+                                        "¿Desea crear otro monstruo? (escriba 'continuar' para seguir o cualquier otra cosa para terminar)");
                                 continuar = scanner.nextLine();
                             }
                         }
-                        // Crear dragon
-                        Dragon dragon = vistaDragon.crearDragonV2();
-
                         // Crear bosque con el dragon, listado monstruos y pregunta por un monstruo jefe
-                        Bosque bosque = vistaBosque.crearBosqueV2(dragon, listaMonstruos);
+                        Bosque bosque = vistaBosque.crearBosqueV2(listaMonstruos);
+
+                        // Crear dragon
+                        Dragon dragon = vistaDragon.crearDragonV2(bosque);
 
                         // Guardar todo lo creado en la base de datos
                         controlador.getControladorMago().guardarListaMagos(listaMagos);
                         controlador.getControladorMonstruo().guardarListaMonstruos(listaMonstruos);
                         controlador.getControladorDragon().guardarDragon(dragon);
                         controlador.getControladorBosque().guardarBosque(bosque);
-                        
-                        vistaBatalla.iniciarBatallaAvanzada(listaMagos, bosque);
+
+                        vistaBatalla.iniciarBatallaAvanzada(listaMagos, bosque, dragon);
                         break;
                     case 0:
                         System.out.println("Saliendo del juego. ¡Hasta luego!");
-                        break;  
+                        break;
                     default:
                         System.out.println("Opcion no valida. Intente de nuevo.");
                 }
@@ -196,7 +198,8 @@ public class Vista {
                 System.out.println("Error en la ejecución inesperado de la opcion " + opcion);
                 System.out.println(e.getMessage());
                 System.out.println(e.getCause());
-                // Muestra todo el error en cascada para investigar en que linea especifica de nuestro codigo ha fallado puede ser util en este caso
+                // Muestra todo el error en cascada para investigar en que linea especifica de
+                // nuestro codigo ha fallado puede ser util en este caso
                 e.printStackTrace();
             }
 
