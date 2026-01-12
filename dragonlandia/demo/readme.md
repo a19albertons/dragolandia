@@ -2,9 +2,14 @@
 
 ## Introduccion
 
-Tarea de Cristina donde debemos crear una aplicación Java en VSCode, Maven e Hibernate donde implementamos una aplicación con 3 clases (bosque, mago y monstruo). Cuyo flujo de ejecución es el siguiente:
-1. Pedirle datos sobre el mago, monstruo y bosque al usuario
-2. Iniciar una batalla entre el mago y el monstruo en el bosque e indicar quien gana.
+Tarea de Cristina donde debemos crear una aplicación Java en VSCode, Maven e Hibernate donde implementamos una aplicación con 3 clases (bosque, mago, monstruo y dragon). Cuyo flujo de ejecución es el siguiente en su version final:
+1. En el menu escoger la opcion 17 Iniciar batalla avanzada
+2. Crear magos
+3. Crear monstruos
+4. Crear dragon
+5. Crear bosque
+6. Manejar los magos durante la batalla
+7. Ver si has perdido o ganado
 
 ## Analisis
 ### Diagrama de clases
