@@ -123,6 +123,14 @@ erDiagram
     BOSQUE }o--|| DRAGON : "dragon (FK)" 
 ```
 
+## Pom.xml explicacion
+
+Tiene 4 dependencias
+- Junit viene por defecto con el proyecto sirve para pruebas unitarias
+- mysql es el conector que sirve para interactuar con la base de datos mysql
+- jakarta persistence sirve para usar las anotaciones de JPA
+- hibernate interactua con la base de datos usando JPA
+
 
 ## Amplicacion
 
