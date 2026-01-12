@@ -90,10 +90,6 @@ erDiagram
         int id PK
         String tipo       
     }
-    MAGO_HECHIZOS {
-        int mago_id FK
-        int hechizo_id FK
-    }
 
     MONSTRUO {
         int id PK
@@ -110,10 +106,6 @@ erDiagram
         int monstruo_jefe_id FK
         int dragon_id FK
     }
-    BOSQUE_MONSTRUOS {
-        int bosque_id FK
-        int monstruo_id FK
-    }
 
     DRAGON {
         int id PK
@@ -123,11 +115,9 @@ erDiagram
     }
 
     %% Relaciones (expresadas textualmente)
-    MAGO ||--o{ MAGO_HECHIZOS : tiene
-    HECHIZOS ||--o{ MAGO_HECHIZOS : pertenece_a
+    MAGO ||--o{ HECHIZOS : tiene
 
-    BOSQUE ||--o{ BOSQUE_MONSTRUOS : tiene
-    MONSTRUO ||--o{ BOSQUE_MONSTRUOS : habita_en
+    BOSQUE ||--o{ MONSTRUO : tiene
 
     BOSQUE }o--|| MONSTRUO : "monstruo_jefe (FK)"
     BOSQUE }o--|| DRAGON : "dragon (FK)" 
