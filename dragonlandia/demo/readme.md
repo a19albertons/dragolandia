@@ -1,6 +1,7 @@
 # Dragolandia
 
 ## Introduccion
+
 Tarea de Cristina donde debemos crear una aplicación Java en VSCode, Maven e Hibernate donde implementamos una aplicación con 3 clases (bosque, mago y monstruo). Cuyo flujo de ejecución es el siguiente:
 1. Pedirle datos sobre el mago, monstruo y bosque al usuario
 2. Iniciar una batalla entre el mago y el monstruo en el bosque e indicar quien gana.
@@ -134,3 +135,7 @@ erDiagram
 - Que el uso de hechizos cueste puntos de magia al mago (nuevo atributo).
 - Que los tipos de monstruos tengan resistencias o debilidades frente a ciertos tipos de hechizos.
 - Que el monstruo jefe tenga habilidades especiales.
+
+## Manual usuario
+
+[Manual de usuario Dragolandia](manualUsuario.md)
