@@ -112,8 +112,8 @@ public class Dragon {
     /**
      * Constructor parametrizado
      * 
-     * @param nombre nombre del dragon
-     * @param nivelFuego nivel de fuego del dragon
+     * @param nombre      nombre del dragon
+     * @param nivelFuego  nivel de fuego del dragon
      * @param resistencia resistencia del dragon
      */
     public Dragon(String nombre, int nivelFuego, int resistencia) {
@@ -128,7 +128,11 @@ public class Dragon {
      * @param monstruo monstruo a atacar
      */
     public void exhalar(Monstruo monstruo) {
-        monstruo.setVida(monstruo.getVida() - this.intensidadFuego);
+        if (monstruo.getVida() < this.intensidadFuego) {
+            monstruo.setVida(0);
+        } else {
+            monstruo.setVida(monstruo.getVida() - this.intensidadFuego);
+        }
     }
 
     /**

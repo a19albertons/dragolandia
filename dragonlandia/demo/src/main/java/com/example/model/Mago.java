@@ -148,8 +148,8 @@ public class Mago {
     /**
      * Constructor con parametros para añadir el objeto a la bd o hacer pruebas
      * 
-     * @param nombre nombre del mago
-     * @param vida vida del mago
+     * @param nombre     nombre del mago
+     * @param vida       vida del mago
      * @param nivelMagia nivel de magia del mago
      */
     public Mago(String nombre, int vida, int nivelMagia, List<Hechizo> conjuros) {
@@ -165,14 +165,18 @@ public class Mago {
      * @param monstruo monstruo al que se le lanza el hechizo
      */
     public void lanzarHechizo(Monstruo monstruo) {
-        monstruo.setVida(monstruo.getVida() - this.nivelMagia);
+        if (monstruo.getVida() - this.nivelMagia < 0) {
+            monstruo.setVida(0);
+        } else {
+            monstruo.setVida(monstruo.getVida() - this.nivelMagia);
+        }
     }
 
     /**
      * Lanza un hechizo a un monstruo especificando el hechizo.
      * 
      * @param monstruo monstruo al que se le lanza el hechizo
-     * @param hechizo hechizo que se lanza
+     * @param hechizo  hechizo que se lanza
      */
     public void lanzarHechizo(Monstruo monstruo, Hechizo hechizo) {
         if (this.conjuros != null && this.conjuros.contains(hechizo)) {
@@ -180,6 +184,7 @@ public class Mago {
             hechizo.efecto(Arrays.asList(monstruo));
         } else {
             // Si el mago intenta usar un hechizo que no conoce, pierde 1 vida
+            // Si puede atacar es que tiene como minimo 1 de vida
             this.vida = this.vida - 1;
         }
     }

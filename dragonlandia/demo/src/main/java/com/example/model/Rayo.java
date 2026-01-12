@@ -18,11 +18,14 @@ public class Rayo extends Hechizo {
     public void efecto(List<Monstruo> objetivos) {
         if (objetivos.size() == 1) {
             Monstruo monstruo = objetivos.get(0);
-            monstruo.setVida(monstruo.getVida() - 100);
-        }
-        else {
+            if (monstruo.getVida() <= 100) {
+                monstruo.setVida(0);
+            } else {
+                monstruo.setVida(monstruo.getVida() - 100);
+            }
+        } else {
             throw new IllegalArgumentException("El hechizo Rayo solo puede aplicarse a un objetivo.");
         }
     }
-    
+
 }

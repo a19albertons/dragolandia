@@ -160,7 +160,11 @@ public class Monstruo {
      * @param mago mago al que ataca el monstruo
      */
     public void atacar(Mago mago) {
-        mago.setVida(mago.getVida() - this.fuerza);
+        if (mago.getVida() < this.fuerza) {
+            mago.setVida(0);
+        } else {
+            mago.setVida(mago.getVida() - this.fuerza);
+        }
     }
 
     /**

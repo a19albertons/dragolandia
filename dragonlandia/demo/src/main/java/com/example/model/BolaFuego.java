@@ -17,9 +17,12 @@ public class BolaFuego extends Hechizo {
     @Override
     public void efecto(List<Monstruo> objetivos) {
         for (Monstruo monstruo : objetivos) {
-            monstruo.setVida(monstruo.getVida() - 50);
+            if (monstruo.getVida() <= 50) {
+                monstruo.setVida(0);
+            } else {
+                monstruo.setVida(monstruo.getVida() - 50);
+            }
         }
     }
 
-    
 }
