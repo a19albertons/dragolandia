@@ -53,19 +53,25 @@ public class ControladorMago {
      * @return el hechizo creado
      */
     public Hechizo crearHechizoPorNombre(String nombreHechizo) {
+        Hechizo devolver = null;
         switch (nombreHechizo.toLowerCase()) {
             case "bolafuego":
-                return new BolaFuego();
+                devolver = new BolaFuego();
+                break;
             case "bolanieve":
-                return new BolaNieve();
+                devolver = new BolaNieve();
+                break;
             case "rayo":
-                return new Rayo();
+                devolver = new Rayo();
+                break;
             case "intimidacion":
-                return new Intimidacion();
+                devolver = new Intimidacion();
+                break;
             default:
                 System.out.println("Hechizo desconocido: " + nombreHechizo);
-                return null;
+                devolver = null;
         }
+        return devolver;
     }
 
     /**
