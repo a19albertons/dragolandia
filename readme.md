@@ -142,3 +142,6 @@ Tiene 4 dependencias
 ## Manual usuario
 
 [Manual de usuario Dragolandia](manualUsuario.md)
+
+## Imagenes de la bd
+[Imagenes bd](imagenes_bd.pdf)
