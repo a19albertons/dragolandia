@@ -41,7 +41,6 @@ class Bosque {
   -int nivelPeligro
   -Monstruo monstruoJefe
   -List<Monstruo> listaMonstruos
-  -Dragon dragon
   +mostrarJefe() : void
   +cambiarJefe(Monstruo) : void
   +addMonstruo(Monstruo) : void
@@ -52,6 +51,7 @@ class Dragon {
   -String nombre
   -int intensidadFuego
   -int resistencia
+  -Bosque bosque_id
   +exhalar(Monstruo) : void
 }
 
@@ -69,7 +69,7 @@ class Intimidacion
 Mago --> Hechizo : 1..*
 Bosque --> Monstruo : 1..*
 Bosque --> Monstruo : 1 [monstruoJefe]
-Bosque --> Dragon : 1
+Dragon --> Bosque : 1
 Hechizo <|-- BolaFuego
 Hechizo <|-- Rayo
 Hechizo <|-- BolaNieve
@@ -104,7 +104,6 @@ erDiagram
         String nombre
         int nivelPeligro
         int monstruo_jefe_id FK
-        int dragon_id FK
     }
 
     DRAGON {
@@ -112,6 +111,7 @@ erDiagram
         String nombre
         int intensidadFuego
         int resistencia
+        int bosque_id FK
     }
 
     %% Relaciones (expresadas textualmente)
@@ -120,7 +120,7 @@ erDiagram
     BOSQUE ||--o{ MONSTRUO : tiene
 
     BOSQUE }o--|| MONSTRUO : "monstruo_jefe (FK)"
-    BOSQUE }o--|| DRAGON : "dragon (FK)" 
+    DRAGON }o--|| BOSQUE : "bosque (FK)" 
 ```
 
 ## Pom.xml explicacion
@@ -144,4 +144,5 @@ Tiene 4 dependencias
 [Manual de usuario Dragolandia](manualUsuario.md)
 
 ## Imagenes de la bd
+
 [Imagenes bd](imagenes_bd.pdf)
